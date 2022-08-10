@@ -16,16 +16,15 @@
       </div>
       <div class="navbar">
         <ul class="nav-lists">
+          <% if user_signed_in? %>
+            <li>ようこそ<%= link_to current_user.nickname, "#", class: "user-nickname" %>さん</li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
+          <% else %>
+             <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+          <% end %>
           <li><%= link_to ' 店舗紹介', shop_path(1), class: "top-show-shop" %></li>
           <li><%= link_to ' メニュー', "#", class: "top-show-menu" %></li>
-          <li><%= link_to ' アクセス', "#", class: "top-show-access" %></li>
-          <%# <% if user_signed_in? %>
-            <li><%= link_to 'ようこそ', "#", class: "user-nickname" %></li>
-            <li><%= link_to 'ログアウト', "#", class: "logout" %></li>
-          <%# <% else %>
-            <li><%= link_to 'ログイン', "#", class: "login" %></li>
-            <li><%= link_to '新規登録', "#", class: "sign-up" %></li>
-          <%# <% end %>
           <li><%= link_to '予約する', "#", class: "top-show-reserve" %></li>
         </ul>
       </div>
