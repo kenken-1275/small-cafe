@@ -12,11 +12,11 @@
   <body>
     <header>
       <div class="heading">
-        <h1 class="title">小さな喫茶店</h1>
+        <h1 class="title"><%= link_to '小さな喫茶店',root_path %></h1>
       </div>
       <div class="navbar">
         <ul class="nav-lists">
-          <li><%= link_to ' 店舗紹介', "#", class: "top-show-shop" %></li>
+          <li><%= link_to ' 店舗紹介', shop_path(1), class: "top-show-shop" %></li>
           <li><%= link_to ' メニュー', "#", class: "top-show-menu" %></li>
           <li><%= link_to ' アクセス', "#", class: "top-show-access" %></li>
           <%# <% if user_signed_in? %>
