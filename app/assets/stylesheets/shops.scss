@@ -40,9 +40,16 @@ ul,li {
 
 .heading-name {
   text-align: center;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid blue;
   width: 200px;
   margin: 40px auto;
+}
+
+.index-announces{
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: scroll;
 }
 
 .messages {
@@ -53,43 +60,52 @@ ul,li {
 .message {
   display: flex;
   font-size: 18px;
-  margin: 0 0 16px 70px;
+  margin: 20px 0 40px 20px;
+  border-bottom: 1px solid black;
 }
 
 .message-date {
-  padding-right: 40px;
+  padding-right: 100px;
 }
 
-/* 店主紹介 */
+.message-title{
+  font-weight: bold;
+  color:darkblue;
+}
+
+/* index真ん中要素 */
 .middle-content{
   height: 450px;
   margin: 0 160px;
 }
 
-.stylist-list{
-  display: flex;
-  justify-content: space-around;
-  margin: 60px 0;
-}
-
-.stylist-image{
-  height: 300px;
-}
-
-.stylist-name{
-  font-size: 16px;
-  text-align: center;
-}
-
-
-
 
 
 // shop詳細ページ
 
+.shop{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shop-center{
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.shop-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin: 10px 0 10px 0;
+  border-bottom: 1px solid black;
+}
+
 .show-shop{
   width: 100vw;
-  height: 1300px;
+  height: 1350px;
   display: flex;
   justify-content: center;
   background-color:white;
@@ -133,4 +149,9 @@ ul,li {
 .map{
   width: 70%;
   height: 450px;
+}
+
+.button{
+  text-align: center;
+  margin-top: 40px;
 }

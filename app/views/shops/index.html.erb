@@ -1,6 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-  <body>
 
     <div class="contents">
       <div class="first-view">
@@ -10,29 +7,19 @@
       <div class="upper-content">
         <!-- 『新着情報』を表示する -->
         <h2 class="heading-name">新着情報</h2>
-        <ul class="messages">
-          <li class="message">
-            <div class="message-date">2019/10/06</div>
-            <div>【新規のお客さま限定】<b>10％OFF</b>キャンペーン</div>
-          </li>
-          <li class="message">
-            <div class="message-date">2019/10/03</div>
-            <div>うれしい<b>ポイントアップキャンペーン</b></div>
-          </li>
-        </ul>
+        <div class="index-announces">
+          <% @announces.each do |announce| %>
+            <ul class="messages">
+              <li class="message">
+                <div class="message-date"><%= announce.date %></div>
+                <div><%= link_to announce.title,announce_path(announce),class:'message-title' %></div>
+              </li>
+            </ul>
+          <% end %>
+        </div>
       </div>
       <div class="middle-content">
-        <!-- 『店主紹介』を表示する -->
-        <h2 class="heading-name">店主紹介</h2>
-        <ul class="stylist-list">
-          <li>
-            <img src="images/staff1.jpg" alt="staff1" class="stylist-image">
-            <h4 class="stylist-name">鈴木</h4>
-          </li>
-        </ul>
       </div>
       <div class="bottom-content">
       </div>
     </div>
-  </body>
-</html>

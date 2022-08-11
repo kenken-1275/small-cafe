@@ -1,0 +1,18 @@
+<div class="announces">
+  <div class="announces-center">
+    <div class="announces-title">お知らせ</div>
+    <div class="announce-new">
+    </div>
+    <div class="announces-index">
+        <div class="announce">
+          <div class="date-title">
+            <div class="announce-date"><%= @announce.date %></div>
+            <div class="announce-title"><%= @announce.title %></div>
+          </div>
+          <div class="announce-content"><%= @announce.content %></div>
+          <div class="sign"><p>店主</p></div>
+        </div>
+    </div>
+    <%= link_to 'トップページに戻る',root_path,class:'back_button'%>
+  </div>
+</div>
