@@ -17,6 +17,19 @@ class Admin::AnnouncesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @announce = Announce.find(params[:id])
+  end
+
+  def update
+    @announce = Announce.find(params[:id])
+    if @announce.update(announce_params)
+      redirect_to action: :index
+    else
+      render :edit
+    end
+  end
   
 
   private

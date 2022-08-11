@@ -8,7 +8,7 @@
       <% @announces.each do |announce| %>
         <div class="announce">
           <%= announce.date %>
-          <%= announce.title %><br>
+          <%= link_to announce.title,edit_admin_announce_path(announce.id) %><br>
           <%= announce.content %>
         </div>
       <% end %>

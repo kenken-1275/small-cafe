@@ -1,0 +1,20 @@
+<div class="announces">
+  <div class="announces-center">
+    <div class="new-announces-title">お知らせ編集</div>
+
+    <div>
+      <%= form_with(model:@announce,url:admin_announce_path(@announce.id),local: true) do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+        <%= f.label :日付を選択：, class: 'lavel' %>
+        <%= f.date_field :date, class: 'new-announce-date' %><br>
+        <%= f.label :タイトル：, class: 'lavel' %>
+        <%= f.text_field :title, class: 'new-announce-title',placeholder:"例) 今月の休業日について" %><br>
+        <%= f.label :内容：, class: 'lavel'%>
+        <%= f.text_area :content, class: 'new-announce-content',placeholder:"例) 今月は下記日程を休業日とさせていただきます。"%>
+        <div class="announce-new">
+          <%= f.submit '変更する', class:'new-announce-submit'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
