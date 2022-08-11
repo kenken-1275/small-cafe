@@ -5,5 +5,6 @@ namespace :admin do
   resources :announces,only:[:index,:new,:create,:edit,:update]
 end
 resources :shops ,only: [:index,:show]
+resources :announces , only: :show
 
 end

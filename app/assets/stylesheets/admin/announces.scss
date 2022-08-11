@@ -21,7 +21,7 @@
   font-size: 30px;
   font-weight: bold;
   padding-bottom: 5px;
-  margin-bottom: 30px;
+  margin: 10px 0 30px 0;
   border-bottom: 1px solid black;
 }
 
@@ -46,7 +46,33 @@
 
 .announce{
   border: 1px solid black;
+  border-radius: 5px;
   margin-bottom: 15px;
+  padding-bottom: 20px;
+}
+
+.date-title{
+  margin-bottom: 30px;
+}
+
+.announce-date{
+  font-size: 20px;
+  margin:0 130px 0 20px;
+}
+
+.announce-title{
+  font-size: 20px;
+}
+
+.announce-content{
+  font-size: 18px;
+  white-space: pre-wrap;
+}
+
+.sign{
+  font-size: 18px;
+  text-align: right;
+  padding-right: 50px;
 }
 
 
@@ -58,7 +84,7 @@
   font-size: 30px;
   font-weight: bold;
   padding-bottom: 5px;
-  margin-bottom: 60px;
+  margin:10px 0 60px 0;
   border-bottom: 1px solid black;
 }
 

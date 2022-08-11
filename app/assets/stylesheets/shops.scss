@@ -45,6 +45,13 @@ ul,li {
   margin: 40px auto;
 }
 
+.index-announces{
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
 .messages {
   width: 50vw;
   margin: 0 auto;
@@ -53,35 +60,19 @@ ul,li {
 .message {
   display: flex;
   font-size: 18px;
-  margin: 0 0 16px 70px;
+  margin: 20px 0 40px 20px;
+  border-bottom: 1px solid black;
 }
 
 .message-date {
-  padding-right: 40px;
+  padding-right: 100px;
 }
 
-/* 店主紹介 */
+/* index真ん中要素 */
 .middle-content{
   height: 450px;
   margin: 0 160px;
 }
-
-.stylist-list{
-  display: flex;
-  justify-content: space-around;
-  margin: 60px 0;
-}
-
-.stylist-image{
-  height: 300px;
-}
-
-.stylist-name{
-  font-size: 16px;
-  text-align: center;
-}
-
-
 
 
 
