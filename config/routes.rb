@@ -6,5 +6,6 @@ namespace :admin do
 end
 resources :shops ,only: [:index,:show]
 resources :announces , only: :show
+resources :menus,only: :index
 
 end
