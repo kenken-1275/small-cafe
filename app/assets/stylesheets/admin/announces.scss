@@ -2,3 +2,91 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// お知らせ一覧ページ
+.announces{
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.announces-center{
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.announces-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid black;
+}
+
+.announce-new{
+  display: flex;
+  justify-content: center;
+}
+
+.announce-new-button{
+  width: 100px;
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 16px
+}
+
+.announces-index{
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  margin-top: 30px;
+  overflow: scroll;
+}
+
+.announce{
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+
+
+// お知らせ新規投稿ページ
+
+.new-announces-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid black;
+}
+
+.error-alert{
+  margin-bottom: 20px;
+}
+
+.lavel{
+  font-size: 15px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.new-announce-date{
+  margin-bottom: 30px;
+}
+
+.new-announce-title{
+  width: 400px;
+  margin-bottom: 30px;
+}
+
+.new-announce-content{
+  width: 500px;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.new-announce-submit{
+  width: 100px;
+  height: 30px;
+}

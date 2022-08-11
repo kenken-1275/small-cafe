@@ -16,8 +16,8 @@
       </div>
       <div class="navbar">
         <ul class="nav-lists">
-          <% if user_signed_in? && current_user.admin %>
-            <li>ようこそ<%= link_to current_user.nickname, "#", class: "user-nickname" %>さん</li>
+          <% if user_signed_in? && current_user.admin? %>
+            <li class="admin-login">管理者でログイン中</li>
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
             <li><%= link_to 'お知らせ一覧', admin_announces_path, class: "index-announce" %></li>
           <% elsif user_signed_in? %>

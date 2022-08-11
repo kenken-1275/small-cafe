@@ -1,1 +1,17 @@
-<h2>お知らせ一覧</h2>
+<div class="announces">
+  <div class="announces-center">
+    <div class="announces-title">お知らせ一覧</div>
+    <div class="announce-new">
+      <div class="announce-new-button"><%= link_to '新規投稿する', new_admin_announce_path %></div>
+    </div>
+    <div class="announces-index">
+      <% @announces.each do |announce| %>
+        <div class="announce">
+          <%= announce.date %>
+          <%= announce.title %><br>
+          <%= announce.content %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
