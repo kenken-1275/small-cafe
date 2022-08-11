@@ -1,3 +1,80 @@
 // Place all the styles related to the reserves controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reserve{
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.reserve-center{
+  width: 70%;
+  height: 100%;
+  
+}
+
+.reserve-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin: 10px 0 50px 0;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.reserve-confirmation{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.reserve-caution{
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.new-reserve-button{
+  text-align: center;
+  margin-top: 100px;
+}
+
+
+// 新規予約ページ
+
+
+.error-alert{
+  margin-bottom: 20px;
+}
+
+.lavel{
+  font-size: 15px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.new-reserve-date{
+  margin-bottom: 30px;
+}
+
+.new-reserve-time{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+.new-reserve-people-number{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+.new-reserve-tel-number{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+.new-reserve-submit{
+  width: 100px;
+  height: 30px;
+}
