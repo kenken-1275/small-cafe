@@ -15,7 +15,7 @@
             <ul class="messages">
               <li class="message">
                 <div class="message-date"><%= announce.date %></div>
-                <div><%= link_to announce.title,announce_path(announce) %></div>
+                <div><%= link_to announce.title,announce_path(announce),class:'message-title' %></div>
               </li>
             </ul>
           <% end %>
