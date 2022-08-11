@@ -83,9 +83,29 @@ ul,li {
 
 // shop詳細ページ
 
+.shop{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shop-center{
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.shop-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin: 10px 0 10px 0;
+  border-bottom: 1px solid black;
+}
+
 .show-shop{
   width: 100vw;
-  height: 1300px;
+  height: 1350px;
   display: flex;
   justify-content: center;
   background-color:white;
@@ -129,4 +149,9 @@ ul,li {
 .map{
   width: 70%;
   height: 450px;
+}
+
+.button{
+  text-align: center;
+  margin-top: 40px;
 }
