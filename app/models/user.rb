@@ -17,4 +17,6 @@ class User < ApplicationRecord
     validates :hiragana_first_name
   end
 
+  has_one :reserve
+
 end
