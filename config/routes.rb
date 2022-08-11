@@ -7,6 +7,6 @@ end
 resources :shops ,only: [:index,:show]
 resources :announces , only: :show
 resources :menus,only: :index
-resorces :reserves, only:[:index]
+resources :reserves, only:[:index]
 
 end
