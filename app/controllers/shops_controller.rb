@@ -4,7 +4,10 @@ class ShopsController < ApplicationController
     @announces = Announce.all.order('created_at DESC')
   end
 
-  def show
+  def introduction
+  end
+
+  def menu
   end
   
 end
