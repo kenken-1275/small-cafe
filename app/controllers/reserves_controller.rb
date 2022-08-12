@@ -16,9 +16,13 @@ class ReservesController < ApplicationController
   end
 
   def back
-		@reserve = Reserve.new(session[:reserve])
-		session.delete(:reserve)
-		render :new
+    if Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    else
+		  @reserve = Reserve.new(session[:reserve])
+		  session.delete(:reserve)
+		  render :new
+    end
 	end
 
   def confirm
