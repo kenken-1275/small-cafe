@@ -2,9 +2,10 @@
   <div class="reserve-center">
     <div class="reserve-title">新規予約</div>
     
-    <div class="reserve-form">
+    <div class="new-reserve-form">
       <%= form_with(model:@reserve,url:reserves_path,method: :post,local: true) do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
+        <div class="reserve-fom">
           <%= f.label :日付を選択：, class: 'lavel'%>
           <%= f.text_field :date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
@@ -12,9 +13,10 @@
           <%= f.label :人数を選択：, class: 'lavel'%>
           <%= f.collection_select(:people_number_id, PeopleNumber.all, :id, :name, {}, {class:"new-reserve-people-number"}) %><br>
           <%= f.label :電話番号：, class: 'lavel'%>
-          <%= f.text_field :tel_number, class: 'new-reserve-tel-number' %>
-        <div class="reserve-new">
-          <%= f.submit '予約する', class:'new-announce-submit'%>
+          <%= f.text_field :tel_number, class: 'new-reserve-tel-number',placeholder:"ハイフンは必要ありません" %>
+          <div class="reserve-new">
+            <%= f.submit '予約する', class:'new-announce-submit'%>
+          </div>
         </div>
       <% end %>
     </div>

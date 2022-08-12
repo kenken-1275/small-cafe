@@ -10,7 +10,6 @@ class Reserve < ApplicationRecord
   with_options presence: true do
     validates :tel_number,format:{with:/\A[0-9]{10,11}\z/,message: "is invalid."}
   end
-  validates :date,presence: true
 
   belongs_to :user
 
