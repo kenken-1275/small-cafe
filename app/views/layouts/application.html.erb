@@ -7,6 +7,9 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
   </head>
 
   <body>
@@ -27,12 +30,13 @@
              <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
              <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
           <% end %>
-          <li><%= link_to ' 店舗紹介', shop_path(1), class: "top-show-shop" %></li>
-          <li><%= link_to ' メニュー', menus_path, class: "top-show-menu" %></li>
-          <li><%= link_to '予約する', "#", class: "top-show-reserve" %></li>
+          <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
+          <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
+          <li><%= link_to '予約する', reserves_path, class: "top-show-reserve" %></li>
         </ul>
       </div>
     </header>
+  </body>
     <%= yield %>
     <footer>
       <p>Copyright(C) 小さな喫茶店 ALL RIGHTS RESERVED.</p>

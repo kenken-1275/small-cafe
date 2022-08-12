@@ -2,7 +2,7 @@ class Admin::AnnouncesController < ApplicationController
   before_action :check_admin?
 
   def index
-    @announces = Announce.all
+    @announces = Announce.all.order('created_at DESC')
   end
 
   def new
@@ -28,6 +28,13 @@ class Admin::AnnouncesController < ApplicationController
       redirect_to action: :index
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @announce = Announce.find(params[:id])
+    if @announce.destroy
+      redirect_to action: :index
     end
   end
   
