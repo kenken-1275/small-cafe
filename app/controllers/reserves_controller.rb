@@ -1,10 +1,17 @@
 class ReservesController < ApplicationController
 
+  before_action :authenticate_user!,only:[:new,:back,:confirm,:create]
+
   def index
-    @reserve = Reserve.where(user_id:current_user.id)
+    if user_signed_in? && Reserve.exists?(user_id:current_user.id)
+      @reserve = Reserve.where(user_id:current_user.id)
+    end
   end
 
   def new
+    if Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    end
     @reserve = Reserve.new
   end
 

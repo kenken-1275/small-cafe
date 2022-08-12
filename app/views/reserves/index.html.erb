@@ -2,7 +2,7 @@
   <div class="reserve-center">
     <div class="reserve-title">予約確認</div>
 
-    <% if Reserve.exists?(user_id:current_user.id) %>
+    <% if user_signed_in? && Reserve.exists?(user_id:current_user.id) %>
       <div class="reserve-confirmation">現在、下記内容でご予約しております。<br>
         <div class="reserve-caution">※ご予約は、お一人様１件のみ承ります。</div>
       </div>
