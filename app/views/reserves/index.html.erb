@@ -3,22 +3,23 @@
     <div class="reserve-title">予約確認</div>
 
     <% if user_signed_in? && Reserve.exists?(user_id:current_user.id) %>
-      <div class="reserve-confirmation">現在、下記内容でご予約しております。<br>
+      <div class="reserve-confirmation">現在、下記内容でご予約を承っております。<br>
         <div class="reserve-caution">※ご予約は、お一人様１件のみ承ります。</div>
       </div>
-      <% @reserve.each do |reserve| %>
-        <div class="reserve-results">
-          <div class="reserve-result">
-            <div class="reserve-content">日時：<%= reserve.resavation_date %></div>
-            <div class="reserve-content">時間：<%= reserve.resavation_time.name %></div>
-            <div class="reserve-content">人数：<%= reserve.people_number.name %></div>
-          </div>
-        </div> 
-      <% end %>
+      <div class="reserve-results">
+        <div class="reserve-result">
+          <div class="reserve-content">日時：<%= @reserve.resavation_date %></div>
+          <div class="reserve-content">時間：<%= @reserve.resavation_time.name %></div>
+          <div class="reserve-content">人数：<%= @reserve.people_number.name %></div>
+        </div>
+      </div> 
+      <div class="button">
+        <%= link_to 'キャンセルする',cancel_confirm_reserves_path,class:'back_button'%>
+      </div>
     <% else %>
-      <div class="reserve-confirmation">現在、予約はありません。</div>
-      <div class="reserve-caution">※予約にはユーザー新規登録・ログインが必要です。</div>
-      <div class="reserve-caution">また、お一人様１件のみ、最大６名様までのご予約とさせていただきます。</div>
+      <div class="reserve-confirmation">現在、ご予約はありません。</div>
+      <div class="reserve-caution">※ご予約にはユーザー新規登録・ログインが必要です。</div>
+      <div class="reserve-caution">また、ご予約は最大１ヶ月先まで、お一人様１件のみ最大６名様までとさせていただきます。</div>
       <div class="new-reserve-button">
         <%= link_to '新規予約する',new_reserf_path,class:'back_button'%>
       </div>
