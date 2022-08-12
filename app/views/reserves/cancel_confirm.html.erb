@@ -1,0 +1,18 @@
+<div class="reserve">
+  <div class="reserve-center">
+    <div class="reserve-title">予約キャンセル確認画面</div>
+
+    <div class="reserve-confirmation">下記ご予約をキャンセルしてよろしいでしょうか？</div>
+      <div class="reserve-results">
+        <div class="reserve-result">
+          <div class="reserve-content">日時：<%= @reserve.resavation_date %></div>
+          <div class="reserve-content">時間：<%= @reserve.resavation_time.name %></div>
+          <div class="reserve-content">人数：<%= @reserve.people_number.name %></div>
+        </div>
+      </div> 
+      <div class="reserve-button">
+        <%= link_to 'トップページに戻る',root_path,class:'reserve-submit'%>
+        <%= link_to 'キャンセル確定',reserf_path(@reserve),method: :delete,class:'reserve-submit'%>
+      </div>
+  </div>
+</div>

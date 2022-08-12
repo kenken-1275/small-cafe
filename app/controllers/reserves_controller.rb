@@ -1,10 +1,10 @@
 class ReservesController < ApplicationController
 
-  before_action :authenticate_user!,only:[:new,:back,:confirm,:create]
+  before_action :authenticate_user!,only:[:new,:back,:confirm,:create,:cancel_confirm,:destroy]
 
   def index
     if user_signed_in? && Reserve.exists?(user_id:current_user.id)
-      @reserve = Reserve.where(user_id:current_user.id)
+      @reserve = Reserve.find_by(user_id:current_user.id)
     end
   end
 
@@ -40,6 +40,22 @@ class ReservesController < ApplicationController
       redirect_to action: :index
     else
       render :new
+    end
+  end
+
+  def cancel_confirm
+    @reserve = Reserve.find_by(user_id:current_user.id)
+    if !Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    @reserve = Reserve.find_by(user_id:current_user.id)
+    if !Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    else @reserve.delete
+      redirect_to action: :index
     end
   end
 
