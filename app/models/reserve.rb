@@ -4,7 +4,7 @@ class Reserve < ApplicationRecord
   belongs_to :resavation_time
   belongs_to :people_number
 
-  validates :date,presence: true
+  validates :resavation_date,presence: true
   validates :resavation_time_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :people_number_id, numericality: { other_than: 1 , message: "can't be blank"}
   with_options presence: true do

@@ -7,7 +7,7 @@
         <%= render 'shared/error_messages', model: f.object %>
         <div class="reserve-fom">
           <%= f.label :日付を選択：, class: 'lavel'%>
-          <%= f.text_field :date, class: 'new-reserve-date',id: "flatpickr" %><br>
+          <%= f.text_field :resavation_date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
           <%= f.collection_select(:resavation_time_id, ResavationTime.all, :id, :name, {}, {class:"new-reserve-time"}) %><br>
           <%= f.label :人数を選択：, class: 'lavel'%>

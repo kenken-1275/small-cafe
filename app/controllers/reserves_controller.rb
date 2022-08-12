@@ -1,6 +1,7 @@
 class ReservesController < ApplicationController
 
   def index
+    @reserve = Reserve.where(user_id:current_user.id)
   end
 
   def new
@@ -33,7 +34,7 @@ class ReservesController < ApplicationController
 
   private
   def reserve_params
-    params.require(:reserve).permit(:date,:resavation_time_id,:people_number_id,:tel_number).merge(user_id:current_user.id)
+    params.require(:reserve).permit(:resavation_date,:resavation_time_id,:people_number_id,:tel_number).merge(user_id:current_user.id)
   end
 
 end
