@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_08_11_072914) do
 
   create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date", null: false
-    t.integer "time_id", null: false
+    t.integer "resavation_time_id", null: false
     t.integer "people_number_id", null: false
     t.string "tel_number", null: false
     t.bigint "user_id", null: false
