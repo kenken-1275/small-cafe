@@ -5,8 +5,8 @@
     <div class="reserve-form">
       <%= form_with(model:@reserve,url:reserves_path,method: :post,local: true) do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
-          <%= f.label :日付を選択：, class: 'lavel' %>
-          <%= f.date_field :date, class: 'new-reserve-date',min: Date.current %><br>
+          <%= f.label :日付を選択：, class: 'lavel'%>
+          <%= f.text_field :date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
           <%= f.collection_select(:time_id, ResavationTime.all, :id, :name, {}, {class:"new-reserve-time"}) %><br>
           <%= f.label :人数を選択：, class: 'lavel'%>
@@ -23,3 +23,15 @@
     </div>
   </div>
 </div>
+<script>
+    flatpickr("#flatpickr", {
+      locale:"ja",
+      disable:[
+        function(date) {
+          return (date.getDay() === 1 || date.getDay() === 2 || date.getDay() ===3);
+        }
+      ],
+      minDate:"today",
+      maxDate: new Date().fp_incr(30)
+    });
+</script>
