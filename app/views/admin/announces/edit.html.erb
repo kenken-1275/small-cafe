@@ -14,6 +14,7 @@
         <div class="announce-new">
           <%= f.submit '変更する', class:'new-announce-submit'%>
         </div>
+        <%= link_to '削除する',admin_announce_path,method: :delete,class:'reserve-submit'%>
       <% end %>
     </div>
   </div>

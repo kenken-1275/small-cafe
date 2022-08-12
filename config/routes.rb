@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'shops#index' 
   namespace :admin do
-    resources :announces,only:[:index,:new,:create,:edit,:update]
+    resources :announces,only:[:index,:new,:create,:edit,:update,:destroy]
   end
   resources :shops ,only: [:index,:show] do
     collection do
