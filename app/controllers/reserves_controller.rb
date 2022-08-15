@@ -43,9 +43,25 @@ class ReservesController < ApplicationController
     end
   end
 
+  def cancel_confirm
+    @reserve = Reserve.find_by(user_id:current_user.id)
+    if !Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    @reserve = Reserve.find_by(user_id:current_user.id)
+    if !Reserve.exists?(user_id:current_user.id)
+      redirect_to root_path
+    else @reserve.delete
+      redirect_to action: :index
+    end
+  end
+
   private
   def reserve_params
-    params.require(:reserve).permit(:resavation_date,:resavation_time_id,:people_number_id,:tel_number).merge(user_id:current_user.id)
+    params.require(:reserve).permit(:resavation_date,:resavation_time,:people_number,:tel_number).merge(user_id:current_user.id)
   end
 
 end

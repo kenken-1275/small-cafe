@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   end
   resources :announces , only: :show
   resources :menus,only: :index
-  resources :reserves, only:[:index,:new,:create] do
+  resources :reserves, only:[:index,:new,:create,:destroy] do
     collection do
       post :confirm
       get :back
+      get :cancel_confirm
     end
   end
 
