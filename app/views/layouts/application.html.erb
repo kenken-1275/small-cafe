@@ -24,7 +24,7 @@
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
             <li><%= link_to 'お知らせ一覧', admin_announces_path, class: "index-announce" %></li>
           <% elsif user_signed_in? %>
-            <li>ようこそ<%= link_to current_user.nickname, "#", class: "user-nickname" %>さん</li>
+            <li>ようこそ<%= link_to current_user.kanji_last_name, "#", class: "user-nickname" %>さん</li>
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
           <% else %>
              <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
