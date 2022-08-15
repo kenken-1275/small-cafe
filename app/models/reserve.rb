@@ -1,6 +1,5 @@
 class Reserve < ApplicationRecord
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
 
   validates :resavation_date,presence: true
   validates :resavation_time, presence: true
