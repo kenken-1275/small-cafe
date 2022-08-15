@@ -14,6 +14,9 @@
             <div class="reserve-content">人数：<%= reserve.people_number %></div>
           </div>
         </div> 
+        <div class="button">
+        <%= link_to 'キャンセルする',cancel_confirm_reserves_path,class:'back_button'%>
+      </div>
       <% end %>
     <% else %>
       <div class="reserve-confirmation">現在、予約はありません。</div>
