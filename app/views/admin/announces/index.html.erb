@@ -4,7 +4,7 @@
     <div class="announce-new">
       <div class="announce-new-button"><%= link_to '新規投稿する', new_admin_announce_path %></div>
     </div>
-    <div class="announces-index">
+    <div class="admin-announces-index">
       <% @announces.each do |announce| %>
         <div class="announce">
           <%= announce.date %>
