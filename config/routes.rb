@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   root to: 'shops#index' 
   namespace :admin do
     resources :announces,only:[:index,:new,:create,:edit,:update,:destroy]
-    resources :reserves
+    resources :reserves do
+      collection do
+        post :confirm
+        get :back
+        get :cancel_confirm
+      end
+    end
   end
   resources :shops ,only: [:index,:show] do
     collection do

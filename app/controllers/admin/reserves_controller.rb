@@ -6,16 +6,36 @@ class Admin::ReservesController < ApplicationController
   end
 
   def new
-    @announce = Announce.new
+    @reservation = Reserve.new
+  end
+
+  def back
+		  @reservation = Reserve.new(session[:reserve])
+		  session.delete(:reserve)
+		  redirect_to action: :new
+	end
+
+  def confirm
+    @reservation = Reserve.new(reservation_params)
+    session[:reservation] = @reservation
+    if @reservation.invalid?
+			redirect_to action: :new
+		end
   end
 
   def create
-    @announce = Announce.new(announce_params)
-    if @announce.save
+    @reservation = Reserve.new(session[:reservation])
+    session.delete(:reservation)
+    if @reservation.save
       redirect_to action: :index
     else
-      render :new
+      redirect_to action: :new
     end
+  end
+
+  def show
+    @reservation = Reserve.find(params[:id])
+    session[:id] = params[:id] 
   end
 
   def edit
@@ -31,9 +51,14 @@ class Admin::ReservesController < ApplicationController
     end
   end
 
+  def cancel_confirm
+    @reservation = Reserve.find(session[:id])
+  end
+
   def destroy
-    @announce = Announce.find(params[:id])
-    if @announce.destroy
+    @reservation = Reserve.find(session[:id])
+    session.delete(:id)
+    if @reservation.destroy
       redirect_to action: :index
     end
   end
@@ -47,8 +72,8 @@ class Admin::ReservesController < ApplicationController
     end
   end
 
-  def announce_params
-    params.require(:announce).permit(:date,:title,:content)
+  def reservation_params
+    params.require(:reserve).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
   end
 
 end
