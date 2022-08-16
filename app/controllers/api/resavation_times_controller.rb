@@ -1,7 +1,7 @@
 class Api::ResavationTimesController < ApplicationController
 
   def index
-    resavation_dates = Reserve.where(params[:resavation_date])
+    resavation_dates = Reserve.where(resavation_date:params[:resavation_date])
 
 
     base_resavation_dates = Reserve.time_option
@@ -12,22 +12,16 @@ class Api::ResavationTimesController < ApplicationController
 
     # {"11:00"=>0, "12:00"=>0, "13:00"=>0, "14:00"=>0, "15:00"=>0, "16:00"=>0}
 
-    pp base_resavation_dates_and_people_number
-
-
 
     resavation_dates.each do |resavation_date|
-      total_people_number = base_resavation_dates_and_people_number[resavation_date.perse_resavation_time] + resavation_date.people_number
       base_resavation_dates_and_people_number[resavation_date.perse_resavation_time] = base_resavation_dates_and_people_number[resavation_date.perse_resavation_time] + resavation_date.people_number
     end
 
- 
-    response_hash = base_resavation_dates_and_people_number.each_with_object({}) do |item, hash| 
-      
+    response_hash = base_resavation_dates_and_people_number.each_with_object({}) do |item, hash|  
       hash[item.first] = (item.second < 3) 
     end
 
-    render json:{ resavation_date: resavation_date }
+    render json:{ response_hash: response_hash }
   end
 
 end
