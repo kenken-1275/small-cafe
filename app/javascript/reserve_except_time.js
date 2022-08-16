@@ -11,11 +11,16 @@ function reserveExceptTime(){
       Object.prototype.extendFunc = function(){};
       valueResavationList = Object.values(resavationList);
       const resavationTime = document.getElementById("reserve_resavation_time");
+      const resavationPeopleNumber = document.getElementById("reserve_people_number");
       for (let i=0; i<valueResavationList.length; i++){
         resavationTime.children[i+1].style.display = 'block';
         if( valueResavationList[i] == false){
             resavationTime.children[i+1].style.display = 'none';
-          };
+        };
+      };
+      if(resavationTime != "" || resavationPeopleNumber != ""){
+        resavationTime.children[0].selected = true;
+        resavationPeopleNumber.children[0].selected = true;
       };
 	  });
   });
