@@ -6,6 +6,7 @@ class Admin::ReservesController < ApplicationController
   end
 
   def new
+    @reservations = Reserve.all.order(:reservation_time)
     @reservation = Reserve.new
   end
 

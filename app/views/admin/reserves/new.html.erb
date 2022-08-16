@@ -4,7 +4,18 @@
 
     <div class="newーreserve-caution">※ご予約状況により、選択肢が表示されない場合がございます。<br>
     </div>
-    
+
+    <div class="parent-simple-calendar">
+      <%= week_calendar(attribute: :reservation_date, events: @reservations) do |date, reservations| %>
+        <%= date.strftime('%-m月%d日') %>
+        <% reservations.each do |reservation| %>
+          <div>
+            <%= reservation.reservation_time.strftime('%H:%M') %><span>　<%= reservation.people_number %>人</span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
     <div class="new-reserve-form">
       <%= form_with(model:@reservation,url:confirm_admin_reserves_path,method: :post,local: true) do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
