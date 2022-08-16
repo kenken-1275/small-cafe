@@ -21,7 +21,7 @@ class ReservesController < ApplicationController
     else
 		  @reserve = Reserve.new(session[:reserve])
 		  session.delete(:reserve)
-		  render :new
+		  redirect_to action: :new
     end
 	end
 
@@ -29,7 +29,7 @@ class ReservesController < ApplicationController
     @reserve = Reserve.new(reserve_params)
     session[:reserve] = @reserve
     if @reserve.invalid?
-			render :new
+			redirect_to action: :new
 		end
   end
 
@@ -39,7 +39,7 @@ class ReservesController < ApplicationController
     if @reserve.save
       redirect_to action: :index
     else
-      render :new
+      redirect_to action: :new
     end
   end
 
@@ -61,7 +61,7 @@ class ReservesController < ApplicationController
 
   private
   def reserve_params
-    params.require(:reserve).permit(:resavation_date,:resavation_time,:people_number,:tel_number).merge(user_id:current_user.id)
+    params.require(:reserve).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
   end
 
 end
