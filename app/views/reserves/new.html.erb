@@ -10,9 +10,9 @@
         <%= render 'shared/error_messages', model: f.object %>
         <div class="reserve-fom">
           <%= f.label :日付を選択：, class: 'lavel'%>
-          <%= f.text_field :resavation_date, class: 'new-reserve-date',id: "flatpickr" %><br>
+          <%= f.text_field :reservation_date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
-          <%= f.select :resavation_time,@reserve.time_option, { include_blank: '選択してください'}, {class:"new-reserve-time"} %><br>
+          <%= f.select :reservation_time,@reserve.time_option, { include_blank: '選択してください'}, {class:"new-reserve-time"} %><br>
           <%= f.label :人数を選択：, class: 'lavel'%>
           <%= f.select :people_number,@reserve.people_number_option,{ include_blank: '選択してください'}, class:"new-reserve-people-number" %><br>
           <%= f.label :電話番号：, class: 'lavel'%>

@@ -21,19 +21,14 @@ ActiveRecord::Schema.define(version: 2022_08_11_072914) do
   end
 
   create_table "reserves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "resavation_date", null: false
-    t.time "resavation_time", null: false
+    t.date "reservation_date", null: false
+    t.time "reservation_time", null: false
     t.integer "people_number", null: false
     t.string "tel_number", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_reserves_on_user_id"
-  end
-
-  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

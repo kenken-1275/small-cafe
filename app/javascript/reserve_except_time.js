@@ -2,25 +2,25 @@ function reserveExceptTime(){
   const flatPickr = document.getElementById("flatpickr");
   if (!flatPickr){ return false;}
   flatPickr.addEventListener("change",()=>{
-    const resavationDate = flatPickr.value;
-    console.log(resavationDate);
-    fetch('/api/resavation_times?resavation_date='+resavationDate)
+    const reservationDate = flatPickr.value;
+    console.log(reservationDate);
+    fetch('/api/reservation_times?reservation_date='+reservationDate)
 	  .then(response => response.json())
 	  .then(data => {
-		  const resavationList = data.response_hash;
+		  const reservationList = data.response_hash;
       Object.prototype.extendFunc = function(){};
-      valueResavationList = Object.values(resavationList);
-      const resavationTime = document.getElementById("reserve_resavation_time");
-      const resavationPeopleNumber = document.getElementById("reserve_people_number");
-      for (let i=0; i<valueResavationList.length; i++){
-        resavationTime.children[i+1].style.display = 'block';
-        if( valueResavationList[i] == false){
-            resavationTime.children[i+1].style.display = 'none';
+      valueReservationList = Object.values(reservationList);
+      const reservationTime = document.getElementById("reserve_reservation_time");
+      const reservationPeopleNumber = document.getElementById("reserve_people_number");
+      for (let i=0; i<valueReservationList.length; i++){
+        reservationTime.children[i+1].style.display = 'block';
+        if( valueReservationList[i] == false){
+            reservationTime.children[i+1].style.display = 'none';
         };
       };
-      if(resavationTime != "" || resavationPeopleNumber != ""){
-        resavationTime.children[0].selected = true;
-        resavationPeopleNumber.children[0].selected = true;
+      if(reservationTime != "" || reservationPeopleNumber != ""){
+        reservationTime.children[0].selected = true;
+        reservationPeopleNumber.children[0].selected = true;
       };
 	  });
   });

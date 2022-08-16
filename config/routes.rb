@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     end
   end
   namespace :api do
-    resources :resavation_times,only: :index
-    resources :resavation_people_numbers,only: :index
+    resources :reservation_times,only: :index
+    resources :reservation_people_numbers,only: :index
   end
 
 end

@@ -1,8 +1,8 @@
 class Reserve < ApplicationRecord
 
 
-  validates :resavation_date,presence: true
-  validates :resavation_time, presence: true
+  validates :reservation_date,presence: true
+  validates :reservation_time, presence: true
   validates :people_number, presence: true
   with_options presence: true do
     validates :tel_number,format:{with:/\A[0-9]{10,11}\z/,message: "is invalid."}
@@ -35,8 +35,8 @@ class Reserve < ApplicationRecord
     (MIN_PEOPLE_NUMBER..MAX_PEOPLE_NUMBER).map{|v| v}
   end
 
-  def perse_resavation_time
-    resavation_time.strftime('%H:%M')
+  def perse_reservation_time
+    reservation_time.strftime('%H:%M')
   end
 
 end
