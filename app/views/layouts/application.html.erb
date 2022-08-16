@@ -23,16 +23,22 @@
             <li class="admin-login">管理者でログイン中</li>
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
             <li><%= link_to 'お知らせ一覧', admin_announces_path, class: "index-announce" %></li>
+            <li><%= link_to '予約一覧', admin_reserves_path, class: "index-announce" %></li>
+            <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
+            <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
           <% elsif user_signed_in? %>
             <li>ようこそ<%= link_to current_user.kanji_last_name, "#", class: "user-nickname" %>さん</li>
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
+            <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
+            <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
+            <li><%= link_to '予約する', reserves_path, class: "top-show-reserve" %></li>
           <% else %>
              <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
              <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+             <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
+            <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
+            <li><%= link_to '予約する', reserves_path, class: "top-show-reserve" %></li>
           <% end %>
-          <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
-          <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
-          <li><%= link_to '予約する', reserves_path, class: "top-show-reserve" %></li>
         </ul>
       </div>
     </header>
