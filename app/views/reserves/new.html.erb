@@ -1,6 +1,9 @@
 <div class="reserve">
   <div class="reserve-center">
     <div class="reserve-title">新規予約</div>
+
+    <div class="newーreserve-caution">※ご予約状況により、選択肢が表示されない場合がございます。<br>
+    </div>
     
     <div class="new-reserve-form">
       <%= form_with(model:@reserve,url:confirm_reserves_path,method: :post,local: true) do |f| %>
