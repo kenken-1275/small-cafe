@@ -1,15 +1,14 @@
 function reserveExceptPeopleNumber(){
-  const reserveTime = document.getElementById("reserve_reservation_time");
+  const reserveTime = document.getElementById("reservation_reservation_time");
   if (!reserveTime){ return false;}
   reserveTime.addEventListener("change",()=>{
     const flatPickr = document.getElementById("flatpickr");
     const reservationDate = flatPickr.value;
-    console.log(reservationDate);
     fetch('/api/reservation_people_numbers?reservation_date='+reservationDate)
 	  .then(response => response.json())
 	  .then(data => {
       const reservationHash = data.response_hash;
-      const reservationPeopleNumber = document.getElementById("reserve_people_number");
+      const reservationPeopleNumber = document.getElementById("reservation_people_number");
       const valueReservationTime = reserveTime.value;
       for (let i=0;i<reservationPeopleNumber.children.length;i++){
           reservationPeopleNumber.children[i].style.display = 'block';
