@@ -2,18 +2,20 @@
   <div class="reserve-center">
     <div class="reserve-title">管理　新規予約</div>
 
-    <div class="newーreserve-caution">※ご予約状況により、選択肢が表示されない場合がございます。<br>
-    </div>
-
     <div class="parent-simple-calendar">
       <%= week_calendar(attribute: :reservation_date, events: @reservations) do |date, reservations| %>
-        <%= date.strftime('%-m月%d日') %>
+        <div class="calendar-date">
+          <%= date.strftime('%-m月%d日') %>
+        </div>
         <% reservations.each do |reservation| %>
           <div>
             <%= reservation.reservation_time.strftime('%H:%M') %><span>　<%= reservation.people_number %>人</span>
           </div>
         <% end %>
       <% end %>
+    </div>
+
+    <div class="newーreserve-caution">※上記ご予約状況により、選択肢が表示されない場合がございます。<br>
     </div>
 
     <div class="new-reserve-form">

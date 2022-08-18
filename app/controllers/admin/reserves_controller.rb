@@ -6,7 +6,14 @@ class Admin::ReservesController < ApplicationController
   end
 
   def new
-    @reservations = Reserve.all.order(:reservation_time)
+    @reservations = Reserve.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
+    reservations_total = Reserve.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
+    reservations_total_people_number = reservations_total.values
+    i = 0
+    @reservations.each do |reservation|
+      reservation[:people_number] = reservations_total_people_number[i]
+      i+=1
+    end
     @reservation = Reserve.new
   end
 
