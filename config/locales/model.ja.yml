@@ -10,6 +10,11 @@ ja:
         last_name: 姓
         email: メールアドレス
         file: プロフィール画像
+        password: パスワード
         crypted_password: パスワード
         created_at: 作成日
         updated_at: 更新日
+        kanji_last_name: お名前(全角)の姓
+        kanji_first_name: お名前(全角)の名
+        hiragana_last_name: お名前(かな)の姓
+        hiragana_first_name: お名前(かな)の名
