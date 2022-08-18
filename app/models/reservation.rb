@@ -1,4 +1,4 @@
-class Reserve < ApplicationRecord
+class Reservation < ApplicationRecord
 
 
   validates :reservation_date,presence: true

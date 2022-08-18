@@ -19,15 +19,15 @@
     </div>
     
     <div class="new-reserve-form">
-      <%= form_with(model:@reserve,url:confirm_reserves_path,method: :post,local: true) do |f| %>
+      <%= form_with(model:@reservation,url:confirm_reservations_path,method: :post,local: true) do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
         <div class="reserve-fom">
           <%= f.label :日付を選択：, class: 'lavel'%>
           <%= f.text_field :reservation_date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
-          <%= f.select :reservation_time,@reserve.time_option, { include_blank: '選択してください'}, {class:"new-reserve-time"} %><br>
+          <%= f.select :reservation_time,@reservation.time_option, { include_blank: '選択してください'}, {class:"new-reserve-time"} %><br>
           <%= f.label :人数を選択：, class: 'lavel'%>
-          <%= f.select :people_number,@reserve.people_number_option,{ include_blank: '選択してください'}, class:"new-reserve-people-number" %><br>
+          <%= f.select :people_number,@reservation.people_number_option,{ include_blank: '選択してください'}, class:"new-reserve-people-number" %><br>
           <%= f.label :電話番号：, class: 'lavel'%>
           <%= f.text_field :tel_number, class: 'new-reserve-tel-number',placeholder:"ハイフンは必要ありません" %>
           <div class="reserve-new">

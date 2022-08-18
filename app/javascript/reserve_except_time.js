@@ -3,15 +3,14 @@ function reserveExceptTime(){
   if (!flatPickr){ return false;}
   flatPickr.addEventListener("change",()=>{
     const reservationDate = flatPickr.value;
-    console.log(reservationDate);
     fetch('/api/reservation_times?reservation_date='+reservationDate)
 	  .then(response => response.json())
 	  .then(data => {
 		  const reservationList = data.response_hash;
       Object.prototype.extendFunc = function(){};
       valueReservationList = Object.values(reservationList);
-      const reservationTime = document.getElementById("reserve_reservation_time");
-      const reservationPeopleNumber = document.getElementById("reserve_people_number");
+      const reservationTime = document.getElementById("reservation_reservation_time");
+      const reservationPeopleNumber = document.getElementById("reservation_people_number");
       for (let i=0; i<valueReservationList.length; i++){
         reservationTime.children[i+1].style.display = 'block';
         if( valueReservationList[i] == false){

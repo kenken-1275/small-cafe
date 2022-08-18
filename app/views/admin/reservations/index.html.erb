@@ -2,12 +2,12 @@
   <div class="admin-reserves-center">
     <div class="admin-reserves-title">管理　予約一覧</div>
     <div class="admin-reserves-new">
-      <div class="admin-reserves-new-button"><%= link_to '新規予約する', new_admin_reserf_path %></div>
+      <div class="admin-reserves-new-button"><%= link_to '新規予約する', new_admin_reservation_path %></div>
     </div>
     <div class="admin-reserves-index">
       <% @reservations.each do |reservation| %>
         <div class="admin-reserve">
-          予約ID：<%= link_to reservation.id, admin_reserf_path(reservation.id) %><br>
+          予約ID：<%= link_to reservation.id, admin_reservation_path(reservation.id) %><br>
           お名前：<%= reservation.user.kanji_last_name %> <%= reservation.user.kanji_first_name %>　様<br>
           予約日時：<%= reservation.reservation_date %>
           <%= reservation.reservation_time.strftime('%H:%M') %><br>

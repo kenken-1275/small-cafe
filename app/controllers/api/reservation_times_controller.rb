@@ -1,10 +1,10 @@
 class Api::ReservationTimesController < ApplicationController
 
   def index
-    reservation_dates = Reserve.where(reservation_date:params[:reservation_date])
+    reservation_dates = Reservation.where(reservation_date:params[:reservation_date])
 
 
-    base_reservation_dates = Reserve.time_option
+    base_reservation_dates = Reservation.time_option
 
     # ['11:00','12:00','13:00','14:00','15:00','16:00']
 

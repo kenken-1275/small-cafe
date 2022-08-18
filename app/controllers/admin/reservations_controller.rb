@@ -1,30 +1,30 @@
-class Admin::ReservesController < ApplicationController
+class Admin::ReservationsController < ApplicationController
   before_action :check_admin?
 
   def index
-    @reservations = Reserve.all.order('reservation_date ASC')
+    @reservations = Reservation.all.order('reservation_date ASC')
   end
 
   def new
-    @reservations = Reserve.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
-    reservations_total = Reserve.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
+    @reservations = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
+    reservations_total = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
     reservations_total_people_number = reservations_total.values
     i = 0
     @reservations.each do |reservation|
       reservation[:people_number] = reservations_total_people_number[i]
       i+=1
     end
-    @reservation = Reserve.new
+    @reservation = Reservation.new
   end
 
   def back
-		  @reservation = Reserve.new(session[:reserve])
-		  session.delete(:reserve)
+		  @reservation = Reservation.new(session[:reservation])
+		  session.delete(:reservation)
 		  redirect_to action: :new
 	end
 
   def confirm
-    @reservation = Reserve.new(reservation_params)
+    @reservation = Reservation.new(reservation_params)
     session[:reservation] = @reservation
     if @reservation.invalid?
 			redirect_to action: :new
@@ -32,7 +32,7 @@ class Admin::ReservesController < ApplicationController
   end
 
   def create
-    @reservation = Reserve.new(session[:reservation])
+    @reservation = Reservation.new(session[:reservation])
     session.delete(:reservation)
     if @reservation.save
       redirect_to action: :index
@@ -42,7 +42,7 @@ class Admin::ReservesController < ApplicationController
   end
 
   def show
-    @reservation = Reserve.find(params[:id])
+    @reservation = Reservation.find(params[:id])
     session[:id] = params[:id] 
   end
 
@@ -60,11 +60,11 @@ class Admin::ReservesController < ApplicationController
   end
 
   def cancel_confirm
-    @reservation = Reserve.find(session[:id])
+    @reservation = Reservation.find(session[:id])
   end
 
   def destroy
-    @reservation = Reserve.find(session[:id])
+    @reservation = Reservation.find(session[:id])
     session.delete(:id)
     if @reservation.destroy
       redirect_to action: :index
@@ -81,7 +81,7 @@ class Admin::ReservesController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reserve).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
+    params.require(:reservation).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
   end
 
 end
