@@ -81,7 +81,7 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
+    params.require(:reservation).permit(:reservation_date,:reservation_time,:people_number,:tel_number,:name).merge(user_id:current_user.id)
   end
 
 end

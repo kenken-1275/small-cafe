@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_08_11_072914) do
     t.integer "people_number", null: false
     t.string "tel_number", null: false
     t.bigint "user_id", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_reservations_on_user_id"

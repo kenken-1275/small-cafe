@@ -5,7 +5,11 @@
     <div class="reserve-confirmation">現在、下記内容でご予約頂いております。</div>
       <div class="reserve-results">
         <div class="reserve-result">
-          <div class="reserve-content">お名前：<%= @reservation.user.kanji_last_name %> <%= @reservation.user.kanji_first_name %>　様</div>
+          <% if @reservation.name == nil %>
+            お名前：<%= @reservation.user.kanji_last_name %> <%= @reservation.user.kanji_first_name %> 様<br>
+          <% else %>
+            お名前：<%= @reservation.name %> 様<br>
+          <% end %>
           <div class="reserve-content">日時：<%= @reservation.reservation_date %></div>
           <div class="reserve-content">時間：<%= @reservation.perse_reservation_time %></div>
           <div class="reserve-content">人数：<%= @reservation.people_number %> 人</div>

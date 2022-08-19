@@ -21,7 +21,7 @@
     <div class="new-reserve-form">
       <%= form_with(model:@reservation,url:confirm_admin_reservations_path,method: :post,local: true) do |f| %>
         <%= render 'shared/error_messages', model: f.object %>
-        <div class="reserve-fom">
+        <div class="reserve-form">
           <%= f.label :日付を選択：, class: 'lavel'%>
           <%= f.text_field :reservation_date, class: 'new-reserve-date',id: "flatpickr" %><br>
           <%= f.label :時間を選択：, class: 'lavel' %>
@@ -29,7 +29,9 @@
           <%= f.label :人数を選択：, class: 'lavel'%>
           <%= f.select :people_number,@reservation.people_number_option,{ include_blank: '選択してください'}, class:"new-reserve-people-number" %><br>
           <%= f.label :電話番号：, class: 'lavel'%>
-          <%= f.text_field :tel_number, class: 'new-reserve-tel-number',placeholder:"ハイフンは必要ありません" %>
+          <%= f.text_field :tel_number, class: 'new-reserve-tel-number',placeholder:"ハイフンは必要ありません" %><br>
+          <%= f.label :お名前：, class: 'lavel'%>
+          <%= f.text_field :name, class: 'new-reserve-name',placeholder:"見本　太郎" %>
           <div class="reserve-new">
             <%= f.submit '予約確認画面へ', class:'new-reserve-submit'%>
           </div>

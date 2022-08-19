@@ -8,7 +8,11 @@
       <% @reservations.each do |reservation| %>
         <div class="admin-reserve">
           予約ID：<%= link_to reservation.id, admin_reservation_path(reservation.id) %><br>
-          お名前：<%= reservation.user.kanji_last_name %> <%= reservation.user.kanji_first_name %>　様<br>
+          <% if reservation.name == nil %>
+            お名前：<%= reservation.user.kanji_last_name %> <%= reservation.user.kanji_first_name %> 様<br>
+          <% else %>
+            お名前：<%= reservation.name %> 様<br>
+          <% end %>
           予約日時：<%= reservation.reservation_date %>
           <%= reservation.reservation_time.strftime('%H:%M') %><br>
           人数：<%= reservation.people_number %>人<br>
