@@ -6,9 +6,9 @@
       <div class="reserve-results">
         <div class="reserve-result">
           <% if @reservation.name == nil %>
-            お名前：<%= @reservation.user.kanji_last_name %> <%= @reservation.user.kanji_first_name %> 様<br>
+            <div class="reserve-content">お名前：<%= @reservation.user.kanji_last_name %> <%= @reservation.user.kanji_first_name %> 様</div>
           <% else %>
-            お名前：<%= @reservation.name %> 様<br>
+            <div class="reserve-content">お名前：<%= @reservation.name %> 様</div>
           <% end %>
           <div class="reserve-content">日時：<%= @reservation.reservation_date %></div>
           <div class="reserve-content">時間：<%= @reservation.perse_reservation_time %></div>
