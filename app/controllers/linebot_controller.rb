@@ -17,7 +17,7 @@ class LinebotController < ApplicationController
         #{reservation.reservation_time.strftime('%H:%M')}
         #{reservation.people_number}人"
     }
-    user_id =  'U072ae1c1843f9f2554e9949cd3d8522a'
+    user_id =  ENV["LINE_USER_ID"]
     response = client.push_message(user_id, message)
   end
 
@@ -30,7 +30,7 @@ class LinebotController < ApplicationController
         #{reservation.reservation_time.strftime('%H:%M')}
         #{reservation.people_number}人"
     }
-    user_id =  'U072ae1c1843f9f2554e9949cd3d8522a'
+    user_id =  ENV["LINE_USER_ID"]
     response = client.push_message(user_id, message)
   end
 
