@@ -35,6 +35,7 @@ class Admin::ReservationsController < ApplicationController
     @reservation = Reservation.new(session[:reservation])
     session.delete(:reservation)
     if @reservation.save
+      LinebotController.push
       redirect_to action: :index
     else
       redirect_to action: :new
