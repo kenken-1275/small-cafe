@@ -68,3 +68,5 @@ gem 'active_hash'
 gem "simple_calendar", "~> 2.0"
 
 gem 'rails-i18n'
+
+gem 'line-bot-api'
