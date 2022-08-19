@@ -45,6 +45,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(session[:reservation])
     session.delete(:reservation)
     if @reservation.save
+      LinebotController.push(@reservation)
       redirect_to action: :index
     else
       redirect_to action: :new
@@ -62,7 +63,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find_by(user_id:current_user.id)
     if !Reservation.exists?(user_id:current_user.id)
       redirect_to root_path
-    else @reservation.delete
+    else LinebotController.cancel_push(@reservation)
+      @reservation.delete
       redirect_to action: :index
     end
   end
