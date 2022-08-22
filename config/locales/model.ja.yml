@@ -23,3 +23,7 @@ ja:
         reservation_time: 予約時間
         people_number: 予約人数
         tel_number: 電話番号
+      announce:
+        date: 日付
+        title: タイトル
+        content: 内容
