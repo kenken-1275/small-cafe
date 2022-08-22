@@ -18,3 +18,8 @@ ja:
         kanji_first_name: お名前(全角)の名
         hiragana_last_name: お名前(かな)の姓
         hiragana_first_name: お名前(かな)の名
+      reservation:
+        reservation_date: 予約日
+        reservation_time: 予約時間
+        people_number: 予約人数
+        tel_number: 電話番号

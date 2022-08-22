@@ -174,9 +174,9 @@ RSpec.describe User, type: :model do
       it "adminの値がtrueの場合" do
         @user.admin = true
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include("Adminシステムエラー：不正な値が入力されました")
       end
     end
   end
+
 end

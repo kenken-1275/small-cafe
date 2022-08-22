@@ -1,11 +1,19 @@
 class Reservation < ApplicationRecord
 
-
-  validates :reservation_date,presence: true
-  validates :reservation_time, presence: true
-  validates :people_number, presence: true
+  validate :pretend_ago
+  def pretend_ago
+    if reservation_date.nil? || reservation_date <= Date.today || reservation_date > Date.today + 31.day || reservation_date.wday == 1 || reservation_date.wday == 2 || reservation_date.wday == 3 
+      errors.add(:reservation_date, 'は今日より１ヶ月以内の営業日を選択してください。') 
+    end
+  end
   with_options presence: true do
-    validates :tel_number,format:{with:/\A[0-9]{10,11}\z/,message: "is invalid."}
+    validates :reservation_time, format:{with:/[1][1-6]:[00]/,message:"は選択肢から選んでください。"}
+  end
+  with_options presence: true do
+    validates :people_number, format:{with:/[1-3]/,message:"は選択肢から選んでください。"}
+  end
+  with_options presence: true do
+    validates :tel_number,format:{with:/\A[0-9]{10,11}\z/,message: "は正しく入力してください。"}
   end
 
   belongs_to :user
