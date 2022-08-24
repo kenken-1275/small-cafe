@@ -5,7 +5,7 @@ class CreatePastReservations < ActiveRecord::Migration[6.0]
       t.time :reservation_time,       null:false
       t.integer :people_number,       null:false
       t.string :tel_number,           null:false
-      t.integer :user_id,             null:false
+      t.integer :user_id,             null:false,foreign_key:true
       t.string :name
       t.timestamps
     end

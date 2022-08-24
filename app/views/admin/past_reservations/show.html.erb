@@ -1,0 +1,26 @@
+<div class="reserve">
+  <div class="reserve-center">
+    <div class="reserve-title">管理　過去の予約確認</div>
+
+    <div class="reserve-confirmation">過去、下記内容でご予約頂きました。</div>
+      <div class="reserve-results">
+        <div class="reserve-result">
+          <% if @past_reservation.name == nil %>
+            <div class="reserve-content">お名前：<%= @past_reservation.user.kanji_last_name %> <%= @past_reservation.user.kanji_first_name %> 様</div>
+          <% else %>
+            <div class="reserve-content">お名前：<%= @past_reservation.name %> 様</div>
+          <% end %>
+          <div class="reserve-content">日時：<%= @past_reservation.reservation_date %></div>
+          <div class="reserve-content">時間：<%= @past_reservation.reservation_time.strftime("%H:%M") %></div>
+          <div class="reserve-content">人数：<%= @past_reservation.people_number %> 人</div>
+          <div class="reserve-content">電話番号：<%= @past_reservation.tel_number %></div>
+        </div>
+      </div> 
+      <div class="button">
+        <%= link_to '過去予約一覧に戻る',admin_past_reservations_path,class:'back_button'%>
+      </div>
+      <div class="button">
+        <%= link_to 'トップページに戻る',root_path,class:'back_button'%>
+      </div>
+    </div>
+</div>

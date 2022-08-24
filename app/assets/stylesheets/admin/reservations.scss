@@ -102,3 +102,18 @@
 .calendar-date{
   margin-bottom: 10px;
 }
+
+
+// past_reservations
+
+.admin-reserves-menu{
+  display: flex;
+  justify-content: space-around;
+}
+
+.past_reservation-button{
+  width: 130px;
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 16px
+}

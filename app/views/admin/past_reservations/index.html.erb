@@ -1,0 +1,25 @@
+<div class="admin-reserves">
+  <div class="admin-reserves-center">
+    <div class="admin-reserves-title">管理　過去の予約一覧</div>
+    <div class="admin-reserves-new">
+        <div class="past_reservation-button"><%= link_to '予約一覧に戻る', admin_reservations_path %></div>
+      </div>
+
+    <div class="admin-reserves-index">
+      <% @past_reservations.each do |past_reservation| %>
+        <div class="admin-reserve">
+          予約ID：<%= link_to past_reservation.id, admin_past_reservation_path(past_reservation) %><br>
+          <% if past_reservation.name == nil %>
+            お名前：<%= past_reservation.user.kanji_last_name %> <%= past_reservation.user.kanji_first_name %> 様<br>
+          <% else %>
+            お名前：<%= past_reservation.name %> 様<br>
+          <% end %>
+          予約日時：<%= past_reservation.reservation_date %>
+          <%= past_reservation.reservation_time.strftime('%H:%M') %><br>
+          人数：<%= past_reservation.people_number %>人<br>
+          電話番号：<%= past_reservation.tel_number %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

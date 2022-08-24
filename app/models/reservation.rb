@@ -18,6 +18,8 @@ class Reservation < ApplicationRecord
 
   belongs_to :user
 
+  
+
   OPEN_TIME = "11:00"
   CLOSE_TIME = "16:00"
   PER_TIME = 60.minutes

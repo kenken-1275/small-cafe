@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
 
 
-  has_one :reserve
+  has_one :reservation
+  has_many :past_reservations
 
 end
