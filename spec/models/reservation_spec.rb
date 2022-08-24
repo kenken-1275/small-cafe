@@ -26,7 +26,7 @@ RSpec.describe Reservation, type: :model do
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
       it 'reservation_dateが1ヶ月以上先の日付では登録できない' do
-        @reservation.reservation_date = "2022-09-30"
+        @reservation.reservation_date = Faker::Date.between(from: Date.today + 32.days, to: Date.today + 60.days)
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
