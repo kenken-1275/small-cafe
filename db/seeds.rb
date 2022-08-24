@@ -18,7 +18,7 @@ User.create!(
 )
 
 Reservation.create!(
-  date: "2022-08-23"
+  reservation_date: "2022-08-23"
   reservation_time: "11:00"
   people_number: "2"
   tel_number: "08000000000"
