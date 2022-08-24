@@ -22,5 +22,5 @@ Reservation.create!(
   reservation_time: '11:00',
   people_number: "2",
   tel_number: "08000000000",
-  user: "1"
+  user_id: "1"
 )
