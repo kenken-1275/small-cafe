@@ -15,7 +15,7 @@ class User < ApplicationRecord
     validates :hiragana_last_name
     validates :hiragana_first_name
   end
-  # validates :admin, exclusion: {in: [true], message: "システムエラー：不正な値が入力されました"}
+  validates :admin, exclusion: {in: [true], message: "システムエラー：不正な値が入力されました"}
 
 
 

@@ -16,11 +16,3 @@ User.create!(
   hiragana_first_name: "しゃ",
   admin: true
 )
-
-Reservation.create!(
-  reservation_date: "2022-08-25",
-  reservation_time: '11:00',
-  people_number: "2",
-  tel_number: "08000000000",
-  user: 1
-)
