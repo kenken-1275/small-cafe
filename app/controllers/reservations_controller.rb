@@ -1,7 +1,10 @@
 class ReservationsController < ApplicationController
 
-  before_action :authenticate_user!,only:[:new,:back,:confirm,:create]
+  before_action :authenticate_user!,only:[:new,:back,:confirm,:create,:cancel_confirm,:destroy]
+  before_action :reservation_exists?,only: [:new,:back]
   before_action :total_reservations,only: [:new,:back,:confirm,:create]
+  before_action :reservation_set,omly: [:cancel_confirm,:destroy]
+
 
   def index
     if user_signed_in? && Reservation.exists?(user_id:current_user.id)
@@ -10,20 +13,13 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    if Reservation.exists?(user_id:current_user.id)
-      redirect_to root_path
-    end
     @reservation = Reservation.new
   end
 
   def back
-    if Reservation.exists?(user_id:current_user.id)
-      redirect_to root_path
-    else
-		  @reservation = Reservation.new(session[:reservation])
-		  session.delete(:reservation)
-		  render :new
-    end
+		@reservation = Reservation.new(session[:reservation])
+		session.delete(:reservation)
+		render :new
 	end
 
   def confirm
@@ -46,25 +42,25 @@ class ReservationsController < ApplicationController
   end
 
   def cancel_confirm
-    @reservation = Reservation.find_by(user_id:current_user.id)
-    if !Reservation.exists?(user_id:current_user.id)
-      redirect_to root_path
-    end
   end
 
   def destroy
-    @reservation = Reservation.find_by(user_id:current_user.id)
-    if !Reservation.exists?(user_id:current_user.id)
-      redirect_to root_path
-    else LinebotController.cancel_push(@reservation)
-      @reservation.delete
-      redirect_to action: :index
-    end
+    LinebotController.cancel_push(@reservation)
+    @reservation.delete
+    redirect_to action: :index
   end
 
+
   private
+
   def reservation_params
     params.require(:reservation).permit(:reservation_date,:reservation_time,:people_number,:tel_number).merge(user_id:current_user.id)
+  end
+
+  def reservation_exists?
+    if Reservation.exists?(user_id:current_user.id)
+      redirect_to root_path
+    end
   end
 
   def total_reservations
@@ -75,6 +71,14 @@ class ReservationsController < ApplicationController
     @reservations.each do |reservation|
       reservation[:people_number] = reservations_total_people_number[i]
       i+=1
+    end
+  end
+
+  def reservation_set
+    if !Reservation.exists?(user_id:current_user.id)
+      redirect_to root_path
+    else
+    @reservation = Reservation.find_by(user_id:current_user.id)
     end
   end
 

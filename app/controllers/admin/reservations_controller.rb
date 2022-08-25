@@ -1,6 +1,8 @@
 class Admin::ReservationsController < ApplicationController
   before_action :check_admin?
   before_action :total_reservations,only: [:new,:back,:confirm,:create]
+  before_action :reservation_session_set,only: [:back,:create]
+  before_action :reservation_set,only: [:cancel_confirm,:destroy]
 
   def index
     @reservations = Reservation.all.order('reservation_date').order('reservation_time')
@@ -11,9 +13,7 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def back
-		  @reservation = Reservation.new(session[:reservation])
-		  session.delete(:reservation)
-		  render :new
+		render :new
 	end
 
   def confirm
@@ -25,8 +25,6 @@ class Admin::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(session[:reservation])
-    session.delete(:reservation)
     if @reservation.save
       redirect_to action: :index
     else
@@ -39,29 +37,13 @@ class Admin::ReservationsController < ApplicationController
     session[:id] = params[:id] 
   end
 
-  def edit
-    @announce = Announce.find(params[:id])
-  end
-
-  def update
-    @announce = Announce.find(params[:id])
-    if @announce.update(announce_params)
-      redirect_to action: :index
-    else
-      render :edit
-    end
-  end
-
   def cancel_confirm
-    @reservation = Reservation.find(session[:id])
   end
 
   def destroy
-    @reservation = Reservation.find(session[:id])
     session.delete(:id)
-    if @reservation.destroy
-      redirect_to action: :index
-    end
+    @reservation.destroy
+    redirect_to action: :index
   end
   
 
@@ -86,6 +68,15 @@ class Admin::ReservationsController < ApplicationController
       reservation[:people_number] = reservations_total_people_number[i]
       i+=1
     end
+  end
+
+  def reservation_session_set
+    @reservation = Reservation.new(session[:reservation])
+    session.delete(:reservation)
+  end
+
+  def reservation_set
+    @reservation = Reservation.find(session[:id])
   end
 
 end
