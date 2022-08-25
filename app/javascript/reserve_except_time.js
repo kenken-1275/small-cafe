@@ -1,6 +1,7 @@
 function reserveExceptTime(){
   const flatPickr = document.getElementById("flatpickr");
-  if (!flatPickr){ return false;}
+  if (!flatPickr){ return false;};
+  if (flatPickr.value != ""){flatPickr.value = "";};
   flatPickr.addEventListener("change",()=>{
     const reservationDate = flatPickr.value;
     fetch('/api/reservation_times?reservation_date='+reservationDate)

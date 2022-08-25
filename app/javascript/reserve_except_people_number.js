@@ -1,6 +1,8 @@
 function reserveExceptPeopleNumber(){
   const reserveTime = document.getElementById("reservation_reservation_time");
-  if (!reserveTime){ return false;}
+  if (!reserveTime){ return false;};
+  const reservationPeopleNumber = document.getElementById("reservation_people_number");
+  if(reservationPeopleNumber.value != ""){reservationPeopleNumber.value = "";};
   reserveTime.addEventListener("change",()=>{
     const flatPickr = document.getElementById("flatpickr");
     const reservationDate = flatPickr.value;
@@ -8,7 +10,6 @@ function reserveExceptPeopleNumber(){
 	  .then(response => response.json())
 	  .then(data => {
       const reservationHash = data.response_hash;
-      const reservationPeopleNumber = document.getElementById("reservation_people_number");
       const valueReservationTime = reserveTime.value;
       for (let i=0;i<reservationPeopleNumber.children.length;i++){
           reservationPeopleNumber.children[i].style.display = 'block';

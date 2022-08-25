@@ -27,9 +27,17 @@ class ReservationsController < ApplicationController
     if Reservation.exists?(user_id:current_user.id)
       redirect_to root_path
     else
+      @reservations = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
+      reservations_total = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
+      reservations_total_people_number = reservations_total.values
+      i = 0
+      @reservations.each do |reservation|
+        reservation[:people_number] = reservations_total_people_number[i]
+        i+=1
+      end
 		  @reservation = Reservation.new(session[:reservation])
 		  session.delete(:reservation)
-		  redirect_to action: :new
+		  render :new
     end
 	end
 
@@ -37,7 +45,15 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     session[:reservation] = @reservation
     if @reservation.invalid?
-			redirect_to action: :new
+      @reservations = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
+      reservations_total = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
+      reservations_total_people_number = reservations_total.values
+      i = 0
+      @reservations.each do |reservation|
+        reservation[:people_number] = reservations_total_people_number[i]
+        i+=1
+      end
+			render :new
 		end
   end
 
@@ -48,7 +64,15 @@ class ReservationsController < ApplicationController
       LinebotController.push(@reservation)
       redirect_to action: :index
     else
-      redirect_to action: :new
+      @reservations = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
+      reservations_total = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
+      reservations_total_people_number = reservations_total.values
+      i = 0
+      @reservations.each do |reservation|
+        reservation[:people_number] = reservations_total_people_number[i]
+        i+=1
+      end
+      render :new
     end
   end
 
