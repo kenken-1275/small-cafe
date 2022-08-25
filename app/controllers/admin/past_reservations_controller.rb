@@ -8,6 +8,10 @@ class Admin::PastReservationsController < ApplicationController
   def show
     @past_reservation = PastReservation.find(params[:id])
   end
+
+  def search
+    @past_reservations = PastReservation.search(params[:keyword],params[:date])
+  end
   
   
 

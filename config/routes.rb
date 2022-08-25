@@ -10,7 +10,11 @@ Rails.application.routes.draw do
         get :cancel_confirm
       end
     end
-    resources :past_reservations,only:[:index,:show]
+    resources :past_reservations,only:[:index,:show] do
+      collection do
+        get :search
+      end
+    end
   end
   resources :shops ,only: [:index,:show] do
     collection do

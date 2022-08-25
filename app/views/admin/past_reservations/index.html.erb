@@ -2,8 +2,15 @@
   <div class="admin-reserves-center">
     <div class="admin-reserves-title">管理　過去の予約一覧</div>
     <div class="admin-reserves-new">
-        <div class="past_reservation-button"><%= link_to '予約一覧に戻る', admin_reservations_path %></div>
-      </div>
+        <div class="past_reservation-btn"><%= link_to '予約一覧に戻る', admin_reservations_path %></div>
+    </div>
+    <div>
+      <%= form_with(url:search_admin_past_reservations_path,local:true,method: :get,class:"search-form") do |form| %>
+        <%= form.text_field :keyword,placeholder:"過去予約検索",class:"search-input" %>
+        <%= form.text_field :date,type:"date",placeholder:"過去予約検索（日付）",class:"search-input" %>
+        <%= form.submit "検索",class:"search-btn"%>
+      <% end %>
+    </div>
 
     <div class="admin-reserves-index">
       <% @past_reservations.each do |past_reservation| %>
