@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
 
   validate :pretend_ago
   def pretend_ago
-    if reservation_date.nil? || reservation_date <= Date.today || reservation_date > Date.today + 31.day || reservation_date.wday == 1 || reservation_date.wday == 2 || reservation_date.wday == 3 
+    if reservation_date.nil? || reservation_date < Date.today || reservation_date > Date.today + 31.day || reservation_date.wday == 1 || reservation_date.wday == 2 || reservation_date.wday == 3 
       errors.add(:reservation_date, 'は今日より１ヶ月以内の営業日を選択してください。') 
     end
   end
@@ -15,6 +15,8 @@ class Reservation < ApplicationRecord
   with_options presence: true do
     validates :tel_number,format:{with:/\A[0-9]{10,11}\z/,message: "は正しく入力してください。"}
   end
+
+  validate :max_people_number
 
   belongs_to :user
 
@@ -49,4 +51,12 @@ class Reservation < ApplicationRecord
     reservation_time.strftime('%H:%M')
   end
 
+  private
+
+  def max_people_number
+    one_time_reservation_total = Reservation.where(reservation_date: reservation_date).where(reservation_time: reservation_time).sum(:people_number)
+    if people_number.nil? || one_time_reservation_total + people_number >= 4
+      errors.add(:people_number,"人数の指定が不正です。")
+    end
+  end
 end
