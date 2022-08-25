@@ -9,7 +9,7 @@ class Reservation < ApplicationRecord
   with_options presence: true do
     validates :reservation_time, format:{with:/[1][1-6]:[00]/,message:"は選択肢から選んでください。"}
   end
-  
+
   validates :people_number, format:{with:/[1-3]/,message:"は選択肢から選んでください。"}
 
   with_options presence: true do
@@ -56,7 +56,7 @@ class Reservation < ApplicationRecord
   def max_people_number
     one_time_reservation_total = Reservation.where(reservation_date: reservation_date).where(reservation_time: reservation_time).sum(:people_number)
     if people_number.nil? || one_time_reservation_total + people_number >= 4
-      errors.add(:people_number,"は正しく選択してください。")
+      errors.add(:people_number,"の値が不正です。")
     end
   end
 end
