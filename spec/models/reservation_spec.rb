@@ -21,7 +21,7 @@ RSpec.describe Reservation, type: :model do
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
       it 'reservation_dateが過去の日付では登録できない' do
-        @reservation.reservation_date = "2022-08-20"
+        @reservation.reservation_date = Date.today - 1.day
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
@@ -58,7 +58,7 @@ RSpec.describe Reservation, type: :model do
       it 'people_numberが空では登録できない' do
         @reservation.people_number = ""
         @reservation.valid?
-        expect(@reservation.errors.full_messages).to include("予約人数が入力されていません。")
+        expect(@reservation.errors.full_messages).to include("予約人数の値が不正です。")
       end
       it 'people_numberが4人以上では登録できない' do
         @reservation.people_number = "4"
@@ -70,18 +70,27 @@ RSpec.describe Reservation, type: :model do
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約人数は選択肢から選んでください。")
       end
+      it 'people_numberが同日同時間に既に予約が入っている場合、3人を超える人数では登録できない' do
+        @reservation.save
+        ano_reservation = FactoryBot.build(:reservation)
+        ano_user = FactoryBot.create(:user)
+        ano_reservation.user_id = ano_user.id
+        ano_reservation.people_number = "3"
+        ano_reservation.valid?
+        expect(ano_reservation.errors.full_messages).to include("予約人数の値が不正です。")
+      end
       it 'tel_numberが空では登録できない' do
         @reservation.tel_number = ""
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("電話番号が入力されていません。")
       end
       it 'tel_numberが12桁以上では登録できない' do
-        @reservation.tel_number = "123456789012"
+        @reservation.tel_number = Faker::Number.number(digits: 12)
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("電話番号は正しく入力してください。")
       end
       it 'tel_numberが9桁以下では登録できない' do
-        @reservation.tel_number = "123456789"
+        @reservation.tel_number = Faker::Number.number(digits: 9)
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("電話番号は正しく入力してください。")
       end
