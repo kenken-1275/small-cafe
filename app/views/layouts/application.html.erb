@@ -27,7 +27,7 @@
             <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
             <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
           <% elsif user_signed_in? %>
-            <li>ようこそ<%= link_to current_user.kanji_last_name, "#", class: "user-nickname" %>さん</li>
+            <li>ようこそ<%= current_user.kanji_last_name %>さん</li>
             <li><%= link_to 'ログアウト', destroy_user_session_path,method: :delete, class: "logout" %></li>
             <li><%= link_to ' 店舗紹介', introduction_shops_path, class: "top-show-shop" %></li>
             <li><%= link_to ' メニュー', menu_shops_path, class: "top-show-menu" %></li>
