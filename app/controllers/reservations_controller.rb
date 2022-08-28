@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!,only:[:new,:back,:confirm,:create,:cancel_confirm,:destroy]
   before_action :reservation_exists?,only: [:new,:back]
   before_action :total_reservations,only: [:new,:back,:confirm,:create]
-  before_action :reservation_set,omly: [:cancel_confirm,:destroy]
+  before_action :reservation_set,only: [:cancel_confirm,:destroy]
 
 
   def index
