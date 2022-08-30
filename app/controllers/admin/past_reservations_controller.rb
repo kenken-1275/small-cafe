@@ -2,7 +2,7 @@ class Admin::PastReservationsController < ApplicationController
   before_action :check_admin?
 
   def index
-    @past_reservations = PastReservation.all.order('reservation_date').order('reservation_time')
+    @past_reservations = PastReservation.all.order('reservation_date DESC',).order('reservation_time')
   end
 
   def show
