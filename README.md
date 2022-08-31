@@ -10,8 +10,8 @@ https://small-cafe.herokuapp.com/
 # テスト用アカウント
 - Basic認証ID:kenken
 - Basic認証パスワード:1275
-- 一般ユーザーメールアドレス：sample@techcamp
-- 一般ユーザーパスワード：1techcamp
+- 一般ユーザーメールアドレス：sample@sample
+- 一般ユーザーパスワード：1sample
 - 管理者メールアドレス：admin@smallcafe
 - 管理者パスワード：admin0711
 
@@ -60,8 +60,33 @@ https://small-cafe.herokuapp.com/
 [要件を定義したシート](https://docs.google.com/spreadsheets/d/192NWSSbbQrXc_r4btVg9X5TLHclcEeQ6nKYos-nFU08/edit#gid=982722306)
 
 # 実装した機能についての画像やGIF及びその説明
+- ユーザー管理機能
+[![Image from Gyazo](https://i.gyazo.com/bc4d48247e975fb76a960a900351d76b.gif)](https://gyazo.com/bc4d48247e975fb76a960a900351d76b)
+
+- 予約機能(過去の日付と定休日は選択できず、また既に予約が入っている場合はそれを考慮し、選択肢が表示されないようになる)
+[![Image from Gyazo](https://i.gyazo.com/f502325840a0b9c7288ba487d2822858.gif)](https://gyazo.com/f502325840a0b9c7288ba487d2822858)
+
+- 予約機能(予約確認画面を挟み、確定するボタンを押すと保存され予約一覧（詳細）ページに戻る)
+[![Image from Gyazo](https://i.gyazo.com/0e6b49fb1c29825a4bee156c9db84690.gif)](https://gyazo.com/0e6b49fb1c29825a4bee156c9db84690)
+
+- 管理者機能(管理者権限を持つアカウントでログインした場合、ヘッダーの内容が変わる)
+[![Image from Gyazo](https://i.gyazo.com/32a8a1e1ae7be51a1cd29cecc543255e.gif)](https://gyazo.com/32a8a1e1ae7be51a1cd29cecc543255e)
+
+- 管理者機能(管理者はお知らせ機能を利用出来、新規投稿・編集・削除が出来る)
+[![Image from Gyazo](https://i.gyazo.com/416d71726b057926b907849d5c67db62.gif)](https://gyazo.com/416d71726b057926b907849d5c67db62)
+
+- お知らせ機能(投稿されたお知らせは、トップページ新着情報欄に表示されるタイトルから詳細を閲覧出来る)
+[![Image from Gyazo](https://i.gyazo.com/1fbf134c18477282f31868020347e115.gif)](https://gyazo.com/1fbf134c18477282f31868020347e115)
+
+- 管理者機能(管理者は、現在の予約一覧を確認出来、全ての予約をキャンセル出来る権限を持つ)
+[![Image from Gyazo](https://i.gyazo.com/2f2ab454a2be6b7dc0286cfe1ea85788.gif)](https://gyazo.com/2f2ab454a2be6b7dc0286cfe1ea85788)
+
+- 管理者機能(管理者は、過去の予約一覧を確認出来る。検索で絞り込むことも可)
+[![Image from Gyazo](https://i.gyazo.com/6535b10fa850627ae32294c76321f334.gif)](https://gyazo.com/6535b10fa850627ae32294c76321f334)
 
 # 実装予定の機能
+- 管理者が休業日と設定した日にちは、予約で選択出来ないようにする機能
+- メニューやトップページのコンテンツの充実化
 
 # データベース設計
 
@@ -144,7 +169,7 @@ https://small-cafe.herokuapp.com/
 - 予約機能の新規予約画面において、営業曜日のみ現在の予約状況を表示するカレンダーの表示を実装した点<br>
 gemのsimple_calendarを利用したが、週で表示する場合、そのままでは全ての曜日が表示されてしまうので、インストールしたコードの解析を行い、どこをどのように変更・追記するとどう変わるという試行錯誤を繰り返し実装に辿り着いた。
 
-- 同じく新規予約画面において、既に予約が入っている日付・時間帯に関してはその人数を考慮し、満員(１つの時間帯で3人まで)であればその時間帯の選択肢を表示しないようにし、まだ空きがある状態であれば予約可能人数(3 - 現予約人数)のみ選択肢を表示させるようにした点。<br>
+- 同じく新規予約画面において、過去の日付と定休日は選択出来ないようにし、また既に予約が入っている日付・時間帯に関してはその人数を考慮し、満員(１つの時間帯で3人まで)であればその時間帯の選択肢を表示しないようにし、まだ空きがある状態であれば予約可能人数(3 - 現予約人数)のみ選択肢を表示させるようにした点。<br>
 JavaScriptの非同期通信で実現しており、コントローラーで日付・時間帯別で予約人数を合計して取得し、人数の選択肢除外の場合はそのまま送信、時間帯の選択肢除外の場合は3人未満かどうかをTrue or Falseで送信し、JavaScript内で処理することで実現しました。
 
 - 予約機能において、予約日時が過去の日付になった時点で自動的にpast_reservationsテーブルにアーカイブされるようにした点。<br>
