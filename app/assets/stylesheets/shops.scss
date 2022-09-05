@@ -128,7 +128,7 @@ ul,li {
 
 .show-shop{
   width: 100vw;
-  height: 1350px;
+  height: 100%;
   display: flex;
   justify-content: center;
   background-color:white;
@@ -140,9 +140,14 @@ ul,li {
 
 }
 
+.date-img{
+  display: flex;
+  justify-content: center;
+}
+
 .date-image{
-  width: 100%;
-  height: 500px;
+  width: 550px;
+  height: 400px;
   margin: 30px 0;
 }
 
@@ -179,6 +184,11 @@ ul,li {
   margin-top: 40px;
 }
 
+.show-back-button{
+  text-align: center;
+  margin: 40px 0;
+}
+
 
 // メニューページ
 
@@ -207,7 +217,7 @@ ul,li {
 .menu{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom:30px;
 }
 
