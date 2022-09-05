@@ -2,9 +2,32 @@
   <div class="menus-center">
     <div class="menus-title">メニュー</div>
     <div class="menu">
-    <%= image_tag 'food_menu.JPG', alt:"フードメニュー画像", class:"menu-image" %>
-    <%= image_tag 'drink_menu.JPG', alt:"ドリンクメニュー画像", class:"menu-image" %>
+      <%= image_tag 'food_menu.JPG', alt:"フードメニュー画像", class:"menu-image" %>
+      <%= image_tag 'drink_menu.JPG', alt:"ドリンクメニュー画像", class:"menu-image" %>
     </div>
-    <%= link_to 'トップページに戻る',root_path,class:'back_button'%>
+    <p class="menu-image-example">メニュー画像(一例)：</p>
+    <div class="menu-lineup">
+      <div class="menu-lunch">
+        <%= image_tag 'lunch-set.JPG', alt:"ランチメニュー画像", class:"lunch-image" %><br>
+        <p class="menu-exp">ランチセット（例）　　￥700</p>
+      </div>
+      <div class="menu-hot-coffee">
+        <%= image_tag 'hot-coffee.JPG', alt:"ホットコーヒー画像", class:"lunch-image" %><br>
+        <p class="menu-exp">コーヒー（ブレンド）　￥400</p>
+      </div>
+    </div>
+    <div class="menu-lineup">
+      <div class="menu-lunch">
+        <%= image_tag 'ice-coffee.JPG', alt:"アイスコーヒー画像", class:"lunch-image" %><br>
+        <p class="menu-exp">黒蜜入りコーヒー　　　￥400</p>
+      </div>
+      <div class="menu-hot-coffee">
+        <%= image_tag 'hot-tea.JPG', alt:"紅茶画像", class:"lunch-image" %><br>
+        <p class="menu-exp">紅茶　　　　　　　　　￥400</p>
+      </div>
+    </div>
+    <div class="menu-back-btn">
+      <%= link_to 'トップページに戻る',root_path,class:"back-btn"%>
+    </div>
   </div>
 </div>
