@@ -75,8 +75,30 @@ ul,li {
 
 /* index真ん中要素 */
 .middle-content{
-  height: 450px;
+  height: 100%;
   margin: 0 160px;
+}
+
+.middle-image{
+  width: 300px;
+  height: 400px;
+  margin-bottom: 50px;
+}
+
+.concept{
+  display: flex;
+}
+
+.concept-title{
+  margin: 0 0 20px 40px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.concept-message{
+  margin-left: 40px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 
