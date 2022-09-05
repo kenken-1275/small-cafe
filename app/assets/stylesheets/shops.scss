@@ -25,10 +25,12 @@ ul,li {
 
 .first-view{
   height: 60vh;
+  display: flex;
+  justify-content: center;
 }
 
 .top-image{
-  width: 100%;
+  width: 1000px;
   height: 100%;
 }
 
