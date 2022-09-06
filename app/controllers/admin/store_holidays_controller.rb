@@ -1,9 +1,10 @@
 class Admin::StoreHolidaysController < ApplicationController
   before_action :check_admin?
-  before_action :total_reservations,only: [:index,:new]
+  before_action :total_reservations,only: [:index,:new,:create]
 
   def index
-    @store_holidays = StoreHoliday.all
+    @store_holidays = StoreHoliday.all.order(store_holiday:'ASC')
+    @days = ["日", "月", "火", "水", "木", "金", "土"]
   end
 
   def new
@@ -11,10 +12,23 @@ class Admin::StoreHolidaysController < ApplicationController
   end
 
   def create
-    store_holiday = StoreHoliday.create(store_holiday_params)
-    redirect_to admin_store_holidays_path
+    @store_holiday = StoreHoliday.new(store_holiday_params)
+    if @store_holiday.save
+      redirect_to action: :index
+    else
+      render :new
+    end
   end
 
+  def show
+    @store_holiday = StoreHoliday.find(params[:id])
+  end
+
+  def destroy
+    @store_holiday = StoreHoliday.find(params[:id])
+    @store_holiday.delete
+    redirect_to action: :index
+  end
 
   private
 
