@@ -3,6 +3,7 @@
     <div class="announces-title">お知らせ一覧</div>
     <div class="announce-new">
       <div class="announce-new-button"><%= link_to '新規投稿する', new_admin_announce_path %></div>
+      <div class="announce-store-holiday-button"><%= link_to '店休日を設定する', admin_store_holidays_path %></div>
     </div>
     <div class="admin-announces-index">
       <% @announces.each do |announce| %>
