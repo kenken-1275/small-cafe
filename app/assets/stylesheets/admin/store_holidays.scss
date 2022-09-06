@@ -5,9 +5,25 @@
   margin-bottom: 30px;
 }
 
+.store_holiday_center{
+  display: flex;
+  justify-content: center;
+}
+
 .store_holiday_index{
   text-align: center;
   font-size: 16px;
   font-weight: bold;
   border: solid 1px black;
+  width: 50%;
+}
+
+.store_holiday{
+  margin: 10px 0;
+}
+
+.show_store_holiday{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
 }

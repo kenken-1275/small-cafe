@@ -27,3 +27,5 @@ ja:
         date: 日付
         title: タイトル
         content: 内容
+      store_holiday:
+        store_holiday: 店休日
