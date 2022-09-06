@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         get :search
       end
     end
+    resources :store_holidays,only:[:index,:new,:create]
   end
   resources :shops ,only: [:index,:show] do
     collection do
