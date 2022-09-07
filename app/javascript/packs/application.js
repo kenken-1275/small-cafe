@@ -8,7 +8,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("../reserve_except_time")
 require("../reserve_except_people_number")
-require("../except_store_holidays")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
