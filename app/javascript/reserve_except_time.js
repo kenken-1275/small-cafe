@@ -11,6 +11,7 @@ function reserveExceptTime(){
       Object.prototype.extendFunc = function(){};
       valueReservationList = Object.values(reservationList);
       const reservationTime = document.getElementById("reservation_reservation_time");
+      if (!reservationTime){ return false;};
       const reservationPeopleNumber = document.getElementById("reservation_people_number");
       for (let i=0; i<valueReservationList.length; i++){
         reservationTime.children[i+1].style.display = 'block';
