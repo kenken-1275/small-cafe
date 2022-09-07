@@ -32,17 +32,43 @@
     </div>
   </div>
 </div>
+<% @store_holidays.each do |holiday| %>
+  <input type="hidden" class="target-date" value="<%= holiday.store_holiday %>">
+<% end %>
 <script>
-    flatpickr("#flatpickr", {
-      locale:"ja",
-      disable:[
-        function(date) {
-          return (date.getDay() === 1 || date.getDay() === 2 || date.getDay() ===3);
-        },
-        "2022-09-18"
-      ],
-      dateFormat: "Y-m-d",
-      minDate:"today",
-      maxDate: new Date().fp_incr(30)
+    // const elementHolidays = document.getElementsByClassName("target-date");
+    // let holidays = [];
+    // for (var i = 0; i < elementHolidays.length; i++) {
+    //   holidays.push(elementHolidays[i].value);
+    // };
+    // console.log(holidays);
+    // flatpickr("#flatpickr", {
+    //   locale:"ja",
+    //   disable:[
+    //     function(date) {
+    //       return (date.getDay() === 1 || date.getDay() === 2 || date.getDay() ===3);
+    //     },
+    //     "2022-09-18","2022-09-22"
+    //   ],
+    //   dateFormat: "Y-m-d",
+    //   minDate:"today",
+    //   maxDate: new Date().fp_incr(30)
+    // });
+
+
+    var config = {};
+    config.locale = "ja";
+    config.dateFormat = "Y-m-d";
+    config.minDate = "today";
+    console.log(config);
+    config.maxDate = new Date().fp_incr(30);
+    config.disable = [];
+    config.disable.push(function(date){
+      return (date.getDay() === 1 || date.getDay() === 2 || date.getDay() ===3);
     });
+    const elementHolidays = document.getElementsByClassName("target-date");
+    for (var i = 0; i < elementHolidays.length; i++) {
+      config.disable.push(elementHolidays[i].value);
+    };
+    flatpickr("#flatpickr", config);
 </script>
