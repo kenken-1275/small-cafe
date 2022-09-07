@@ -7,34 +7,38 @@
       <div class="upper-content">
         <!-- 『新着情報』を表示する -->
         <h2 class="heading-name">新着情報</h2>
-        <div class="index-announces">
-          <% @announces.each do |announce| %>
-            <ul class="messages">
-              <li class="message">
-                <div class="message-date"><%= announce.date %></div>
-                <div><%= link_to announce.title,announce_path(announce),class:'message-title' %></div>
-              </li>
-            </ul>
-          <% end %>
+        <div class="top-index-announces">
+          <div class="index-announces">
+            <% @announces.each do |announce| %>
+              <ul class="messages">
+                <li class="message">
+                  <div class="message-date"><%= announce.date %></div>
+                  <div><%= link_to announce.title,announce_path(announce),class:'message-title' %></div>
+                </li>
+              </ul>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="middle-content">
         <h2 class="heading-name">コンセプト</h2>
-        <div class="concept">
-          <div class="concept-image">
-          <%= image_tag 'ice-coffee.JPG', alt:"コーヒー画像", class:"middle-image" %>
-          </div>
-          <div class="concept-content">
-            <div class="concept-title">
-             「自由気ままにのんびり」
+        <div class="top-concept">
+          <div class="concept">
+            <div class="concept-image">
+            <%= image_tag 'ice-coffee.JPG', alt:"コーヒー画像", class:"middle-image" %>
             </div>
-            <div class="concept-message">
-              <br>
-              リビングを改装してカフェを営んでおります。<br>
-              <br>
-              友人同士もしくは一人でゆったりとした時間を過ごすも良し、店主と会話を楽しむのも良し。<br>
-              <br>
-              名前の通り小さいですが、心ゆくままにのんびりお寛ぎいただけると幸いです。
+            <div class="concept-content">
+              <div class="concept-title">
+               「自由気ままにのんびり」
+              </div>
+              <div class="concept-message">
+                <br>
+               リビングを改装してカフェを営んでおります。<br>
+                <br>
+                友人同士もしくは一人でゆったりとした時間を過ごすも良し、店主と会話を楽しむのも良し。<br>
+                <br>
+                名前の通り小さいですが、心ゆくままにのんびりお寛ぎいただけると幸いです。
+              </div>
             </div>
           </div>
         </div>

@@ -24,14 +24,14 @@ ul,li {
 }
 
 .first-view{
-  height: 60vh;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
 
 .top-image{
   width: 1000px;
-  height: 100%;
+  height: 550px;
 }
 
 /* 新着情報 */
@@ -47,8 +47,14 @@ ul,li {
   margin: 40px auto;
 }
 
+.top-index-announces{
+  display: flex;
+  justify-content: center;
+}
+
 .index-announces{
   height: 300px;
+  width: 1000px;
   border: 1px solid black;
   border-radius: 5px;
   overflow: scroll;
@@ -87,7 +93,13 @@ ul,li {
   margin-bottom: 50px;
 }
 
+.top-concept{
+  display: flex;
+  justify-content: center;
+}
+
 .concept{
+  width: 1000px;
   display: flex;
   justify-content: center;
 }
