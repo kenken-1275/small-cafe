@@ -22,6 +22,7 @@ class Admin::StoreHolidaysController < ApplicationController
 
   def show
     @store_holiday = StoreHoliday.find(params[:id])
+    @days = ["日", "月", "火", "水", "木", "金", "土"]
   end
 
   def destroy

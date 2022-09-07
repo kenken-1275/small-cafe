@@ -4,7 +4,7 @@
 
     <div class="store_holiday_announce">下記日程で設定している店休日を取り消しますか？</div>
     <div class="show_store_holiday">
-        ・<%= @store_holiday.store_holiday.strftime("%-m月%d日") %>
+        ・<%= @store_holiday.store_holiday.strftime("%-m月%d日(#{@days[@store_holiday.store_holiday.wday]})") %>
     </div>
 
     <div class="button">
