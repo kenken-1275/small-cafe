@@ -5,14 +5,16 @@
       <div class="announce-new-button"><%= link_to '新規投稿する', new_admin_announce_path %></div>
       <div class="announce-store-holiday-button"><%= link_to '店休日一覧', admin_store_holidays_path %></div>
     </div>
-    <div class="admin-announces-index">
-      <% @announces.each do |announce| %>
-        <div class="announce">
-          <%= announce.date %>
-          <%= link_to announce.title,edit_admin_announce_path(announce.id) %><br>
-          <%= announce.content %>
-        </div>
-      <% end %>
+    <div class="admin-announces-middle">
+      <div class="admin-announces-index">
+        <% @announces.each do |announce| %>
+          <div class="admin-announce">
+            <%= announce.date %>
+            <%= link_to announce.title,edit_admin_announce_path(announce.id) %><br>
+            <%= announce.content %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
