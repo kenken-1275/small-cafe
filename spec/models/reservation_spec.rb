@@ -31,19 +31,27 @@ RSpec.describe Reservation, type: :model do
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
       it 'reservation_dateが月曜日の日付では登録できない' do
-        @reservation.reservation_date = "2022-08-29"
+        @reservation.reservation_date = "2022-09-26"
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
       it 'reservation_dateが火曜日の日付では登録できない' do
-        @reservation.reservation_date = "2022-08-30"
+        @reservation.reservation_date = "2022-09-27"
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
       end
       it 'reservation_dateが水曜日の日付では登録できない' do
-        @reservation.reservation_date = "2022-08-31"
+        @reservation.reservation_date = "2022-09-28"
         @reservation.valid?
         expect(@reservation.errors.full_messages).to include("予約日は今日より１ヶ月以内の営業日を選択してください。")
+      end
+      it 'reservation_dateが店休日の日付では登録できない' do
+        @store_holiday = FactoryBot.build(:store_holiday)
+        @store_holiday.store_holiday = "2022-09-20"
+        @store_holiday.save
+        @reservation.reservation_date = "2022-09-20"
+        @reservation.valid?
+        expect(@reservation.errors.full_messages).to include("予約日は店休日です。")
       end
       it 'reservation_timeが空では登録できない' do
         @reservation.reservation_time = ""
