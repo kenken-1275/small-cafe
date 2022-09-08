@@ -18,6 +18,8 @@ class Reservation < ApplicationRecord
 
   validate :max_people_number
 
+  validate :except_store_holidays
+
   belongs_to :user
 
   
@@ -59,4 +61,14 @@ class Reservation < ApplicationRecord
       errors.add(:people_number,"の値が不正です。")
     end
   end
+
+  def except_store_holidays
+    store_holidays = StoreHoliday.all
+    store_holidays.each do |holiday|
+      if holiday.store_holiday == reservation_date
+        errors.add(:reservation_date,"は店休日です。")
+      end
+    end
+  end
+  
 end
