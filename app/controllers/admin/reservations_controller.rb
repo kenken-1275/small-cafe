@@ -10,6 +10,7 @@ class Admin::ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @store_holidays = StoreHoliday.select(:store_holiday).order(store_holiday:'ASC')
   end
 
   def back
