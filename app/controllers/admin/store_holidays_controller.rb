@@ -10,10 +10,6 @@ class Admin::StoreHolidaysController < ApplicationController
   def new
     @store_holiday = StoreHoliday.new
     @store_holidays = StoreHoliday.select(:store_holiday).order(store_holiday:'ASC')
-    @result = @store_holidays.each_with_object([]) do |(k,v),memo|
-      memo << k[:store_holiday].to_s
-    end
-    p @result
   end
 
   def create
