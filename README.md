@@ -143,6 +143,11 @@ https://small-cafe.herokuapp.com/
 | title   | string | null: false |
 | content | text   | null: false |
 
+## store_holidaysテーブル
+| Column        | Type   | Options                 |
+| ------------- | ------ | ----------------------- |
+| store_holiday | date   | null: false,unique:true |
+
 # ER図
 
 ![ER図](small-cafe.drawio.svg)
