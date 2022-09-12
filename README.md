@@ -159,7 +159,7 @@ https://small-cafe.herokuapp.com/
 # 開発環境
 - フロントエンド：HTML・CSS・JavaScript
 - バックエンド：Ruby・Ruby on Rails
-- インフラ：heroku・messaging-api
+- インフラ：heroku
 - テスト：Rspec
 - テキストエディタ：Visual Studio Code
 - タスク管理：GitHub
