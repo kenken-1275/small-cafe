@@ -157,8 +157,8 @@ https://small-cafe.herokuapp.com/
 ![画面遷移図](small-cafe-transition.drawio.svg)
 
 # 開発環境
-- フロントエンド：HTML・CSS
-- バックエンド：Ruby・Ruby on Rails・JavaScript
+- フロントエンド：HTML・CSS・JavaScript
+- バックエンド：Ruby・Ruby on Rails
 - インフラ：heroku・messaging-api
 - テスト：Rspec
 - テキストエディタ：Visual Studio Code
