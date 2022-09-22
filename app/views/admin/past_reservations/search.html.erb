@@ -13,7 +13,7 @@
     </div>
 
     <div class="admin-reserves-index">
-      <% if @past_reservations == "" %>
+      <% if @past_reservations.blank? %>
         <div class="admin-reserve">該当する予約はありません。</div>
       <% else %>
         <% @past_reservations.each do |past_reservation| %>
