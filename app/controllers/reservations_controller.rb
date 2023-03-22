@@ -67,9 +67,11 @@ class ReservationsController < ApplicationController
   def total_reservations
     @reservations = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time)
     reservations_total = Reservation.select("reservation_date,reservation_time,people_number").group(:reservation_date).group(:reservation_time).sum(:people_number)
-    reservations_total_people_number = reservations_total.values
+    if !reservation_total.empty?
+      reservations_total_people_number = reservations_total.values
+    end
     i = 0
-    if @reservations.present?
+    if !@reservations.empty?
       @reservations.each do |reservation|
         reservation[:people_number] = reservations_total_people_number[i]
         i+=1
