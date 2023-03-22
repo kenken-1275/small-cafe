@@ -72,7 +72,7 @@ class ReservationsController < ApplicationController
     # @reservations.each do |reservation|
     #   reservation[:people_number] = reservations_total_people_number[i]
     #   i+=1
-    end
+    # end
   end
 
   def reservation_set
