@@ -3,7 +3,7 @@
     <div class="reserve-title">新規予約</div>
 
     <div class="parent-simple-calendar">
-      <%= week_calendar(attribute: :reservation_date, events: @reservations) do |date, reservations| %>
+      <%= week_calendar(attribute: :reservations_reservation_date, events: @reservations) do |date, reservations| %>
         <div class="calendar-date">
           <%= date.strftime('%-m月%d日') %>
         </div>
