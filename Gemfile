@@ -78,3 +78,5 @@ gem 'net-imap'
 gem 'net-pop'
 
 gem 'net-smtp'
+
+gem 'psych', '~> 3.1'
