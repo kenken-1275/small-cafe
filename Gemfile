@@ -73,6 +73,8 @@ gem 'line-bot-api'
 
 gem "whenever",require: false
 
-group :production do
-  gem 'pg'
-end
+gem 'net-imap'
+
+gem 'net-pop'
+
+gem 'net-smtp'
